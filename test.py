@@ -10,6 +10,5 @@ def test():
     print(test.a + 2)
     return 3
 
-test()
 
 print (test.a)

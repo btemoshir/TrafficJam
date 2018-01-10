@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 N = 100.
 dx = 1/N
-dt = 1/(2*N)
+dt = 1/(N)
 T = .9
 v0 = 1
 rho0 = 1
@@ -102,7 +102,7 @@ def Lagrange(X, p0 = p0):
     return X
 
 def L2(A, B):
-    return np.sum(np.sqrt(((A - B)/A)**2))
+    return np.sum(np.sqrt(((A - B)/A)**2))/N
 
 
 def dxdt(scheme, lower, upper, dr):
@@ -126,13 +126,16 @@ def dxdt(scheme, lower, upper, dr):
 
             difference.append(L2(lp, p))
         
-        plt.plot(time, difference, label=str(ratio))
+        plt.plot(time, difference, label=str(dx/dt))
     plt.legend()
+    plt.xlabel("Time")
+    plt.ylabel("Error")
+    plt.title("dx dt comparison")
     
     plt.show()
 
 if __name__ == "__main__":
-    dxdt(Godunov, 1.5, 5., .5)
+    dxdt(LF, .8, 1.4, .1)
 
 
 

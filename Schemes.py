@@ -87,9 +87,6 @@ def Godunov(p):
     u += Rare*v_right*ul
     u += Rare*v_left*ur
 
-
-    #Traffic light. 
-
     f_right = velocity(0, u)*u
     f_left  = velocity(-1, u)*np.roll(u, 1)
 

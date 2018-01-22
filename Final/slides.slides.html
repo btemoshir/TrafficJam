@@ -15,8 +15,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <!-- General and theme style sheets -->
-<link rel="stylesheet" href="reveal.js/css/reveal.css">
-<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+<link rel="stylesheet" href="Desktop\ENS\Computational-Physics\TrafficJam\reveal.js/css/reveal.css">
+<link rel="stylesheet" href="Desktop\ENS\Computational-Physics\TrafficJam\reveal.js/css/theme/simple.css" id="theme">
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
@@ -24,14 +24,14 @@ if( window.location.search.match( /print-pdf/gi ) ) {
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = 'reveal.js/css/print/pdf.css';
+        link.href = 'Desktop\ENS\Computational-Physics\TrafficJam\reveal.js/css/print/pdf.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
 }
 
 </script>
 
 <!--[if lt IE 9]>
-<script src="reveal.js/lib/js/html5shiv.js"></script>
+<script src="Desktop\ENS\Computational-Physics\TrafficJam\reveal.js/lib/js/html5shiv.js"></script>
 <![endif]-->
 
 <!-- Loading the mathjax macro -->
@@ -11905,7 +11905,19 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="---Traffic-Flow-with-PDEs-"><font color="Tomato"> <center> <u> Traffic Flow with PDEs </u></center></font><a class="anchor-link" href="#---Traffic-Flow-with-PDEs-">&#182;</a></h1><h3 id="--ICFP-M1-Numercial-Physics-Project-2017-2018--"><font color="Tomato"> <center> ICFP M1 Numercial Physics Project 2017-2018 </center> </font><a class="anchor-link" href="#--ICFP-M1-Numercial-Physics-Project-2017-2018--">&#182;</a></h3>
+<h1 id="---Traffic-Flow-with-PDEs-"><font color="Tomato"> <center> <u> Traffic Flow with PDEs </u></center></font><a class="anchor-link" href="#---Traffic-Flow-with-PDEs-">&#182;</a></h1><h2 id="--ICFP-M1-Numercial-Physics-Project-2017-2018--"><font color="Tomato"> <center> ICFP M1 Numercial Physics Project 2017-2018 </center> </font><a class="anchor-link" href="#--ICFP-M1-Numercial-Physics-Project-2017-2018--">&#182;</a></h2><h3><font color='navy'> <center> Rob Hesselink (rob.hesselink@ens.fr) <br> <br> Moshir Harsh (moshir.harsh@ens.fr)</center></font></h3>
+<p><br></p>
+<center> <img src="ENS_Logo.png" width="150"> </center>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="http://www.garbell.com/US395-old/US395-PwyRd-1962.jpg" alt="Image of FreeRoad">
+Old U.S. 395 Highway Sand Diego from <a href="http://www.garbell.com/US395-old/395.htm">http://www.garbell.com/US395-old/395.htm</a></p>
+
 </div>
 </div>
 </div></section><section>
@@ -11913,7 +11925,222 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="--Authors:-Rob-Hesselink(rob.hesselink@ens.fr)-and-Moshir-Harsh-(moshir.harsh@ens.fr)"><font color="navy"> <center> Authors: Rob Hesselink(rob.hesselink@ens.fr) and Moshir Harsh (moshir.harsh@ens.fr)</center></font><a class="anchor-link" href="#--Authors:-Rob-Hesselink(rob.hesselink@ens.fr)-and-Moshir-Harsh-(moshir.harsh@ens.fr)">&#182;</a></h4>
+<p><img src="https://s1.cdn.autoevolution.com/images/news/the-longest-traffic-jam-in-history-12-days-62-mile-long-47237-7.jpg" alt="Image of Jam1">
+From autoevolution</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="http://bloggingexperiment.com/wp-content/uploads/am/content/2010/06/traffic-jam.jpg" alt="Image of Jam1">
+From Blogex</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="http://abcnews.go.com/images/Politics/congestion_infographic.png" alt="Image of Cost"></p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="https://i0.wp.com/berkeleysciencereview.com/wp-content/uploads/2016/05/Spring_2015_Wu_03.jpg?resize=1000%2C429" alt="Image of Phantom">
+From Berklee Science Review</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="--In-come-the-Physicists--"><font color="Tomato"> <center> In come the Physicists </center> </font><a class="anchor-link" href="#--In-come-the-Physicists--">&#182;</a></h2><h3 id="-Mathematically-Model-Traffic-Flows-and-Traffic-Jams-"><font color="navy"> Mathematically Model Traffic Flows and Traffic Jams </font><a class="anchor-link" href="#-Mathematically-Model-Traffic-Flows-and-Traffic-Jams-">&#182;</a></h3><ul>
+    <li> Do what we know best: Model with PDEs
+    <li> This approach has resulted in numerous publications
+    <li> PDEs better to use over Difference Equations:
+        <ul>
+            <li> In the limit of large number, continuous descriptions work well because relative fluctuations are small 
+            <li> Analytical Results sometimes available
+            <li> More robust to chaos
+            <li> Successfully used bye Ecologists for years
+        </ul>
+    <li> Exploring non-linearities in nature
+</ul>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="http://4.bp.blogspot.com/-lVbMc40KdeU/T13_uAfzHAI/AAAAAAAAB_M/8A0-htPDcbs/s1600/linear-model-490.jpg" alt="Image of Non-Linear"></p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="--Mathematical-Models-and-Lighthill&#8211;Whitham&#8211;Richards-(LWR)-Equation-"><font color="Tomato"> <center> Mathematical Models and Lighthill&#8211;Whitham&#8211;Richards (LWR) Equation </center></font><a class="anchor-link" href="#--Mathematical-Models-and-Lighthill&#8211;Whitham&#8211;Richards-(LWR)-Equation-">&#182;</a></h2><h3 id="The-basic-idea-"><font color="navy">The basic idea </font><a class="anchor-link" href="#The-basic-idea-">&#182;</a></h3><ul>
+    <li> Analogy with fluid flow models
+    <li> Cars modelled with a <b>density field $\rho(\vec{x})$</b> and with a <b>velocity field $u(\vec{x})$</b>
+    <li> Objective is to determine $\rho(t,\vec{x})$ and $u(t,\vec{x})$ given appropriate boundary conditions
+    <li> PDE which relates the time and space evolution of density and velocity under the appropriate physical law governing the traffic flow
+</ul>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="-Congestion-"><font color="navy"> Congestion </font><a class="anchor-link" href="#-Congestion-">&#182;</a></h3><ul>
+    <li> Velocity u as a function of the density $\rho$
+    <li> Physically at low densities, the cars will go at high velocities with $v_0$ being the maximum velocity
+    <li> if the density of cars get high, the velocity of cars will decrease linearly due to congestion, becoming 0 at $\rho = \rho_0$ </li>
+    <li> \begin{equation}
+    u = v_0\left(1-\frac{\rho}{\rho_0}\right)
+\end{equation} </li>
+<li> Here we study 1-dimensional traffic flow
+</ul><h3 id="-Continuity-Equation-"><font color="navy"> Continuity Equation </font><a class="anchor-link" href="#-Continuity-Equation-">&#182;</a></h3><ul>
+    <li> We consider a <b>circular road with no input nor output flux of cars</b>
+    <li> The <b>number of cars should be conserved in time</b>
+    <li> Use the <b>continuity equation for an incompressible fluid</b>
+    <li> \begin{equation}
+    \frac{\partial \rho}{\partial t} + \frac{\partial (\rho u)}{\partial x} = 0
+\end{equation}
+</ul>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="The-Model-Equation"><font color="navy">The Model Equation</font><a class="anchor-link" href="#The-Model-Equation">&#182;</a></h3><p>Combining the Previous Equations we get:</p>
+<p>\begin{equation}
+ \frac{\partial \rho}{\partial t} + \frac{\partial}{\partial x}\left[ v_0 \left(1-\frac{\rho}{\rho_0}\right)\rho \right] = 0 
+\end{equation}</p>
+<p>where <b>$v_0$ and $\rho_0$ are the parameters which are set to one</b> without loss of generality. So the equation becomes:</p>
+<p>\begin{equation}
+    \frac{\partial \rho}{\partial t} + \frac{\partial}{\partial x}\left[ \left(1-\rho\right)\rho \right] = 0
+\end{equation}</p>
+<p>This equation can also be written as:</p>
+<p>\begin{equation}
+    \frac{\partial \rho}{\partial t} + \left(1-2\rho\right)\frac{\partial \rho}{\partial x} = 0
+\end{equation}</p>
+<p>This is the simplest <b>Lighthill–Whitham–Richards LWR model</b>. This equation is also known as the <b>inviscid Burgers' equation</b> which form huge discontinuities commonly referred to as <b>shock</b>. The LWR equation was developed in 1955 and 1956 by Lighthill and Whitham, and independently also by Richards.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="--Burgers'-Equation-and-Shocks-"><font color="Tomato"> <center> Burgers' Equation and Shocks </center></font><a class="anchor-link" href="#--Burgers'-Equation-and-Shocks-">&#182;</a></h2><h3 id="-Advection-Equation-"><font color="navy"> Advection Equation </font><a class="anchor-link" href="#-Advection-Equation-">&#182;</a></h3><ul>
+    <li> <b>Hyperbolic partial differential equations</b>
+    <li> Notorious for numerical schemes to handle due to shocks.
+</ul><h3 id="Shocks-"><font color="navy">Shocks </font><a class="anchor-link" href="#Shocks-">&#182;</a></h3><ul>
+    <li> The propagation velocity decreases with density, 
+    <li> Highly dense and slowly moving regions, and rare and highly mobile regions which propagate as a shock wave.
+    <li> Steep gradient or a discontinuity in $\rho$, which propagates at a velocity, called a shock wave velocity.
+    <li> The numerical treatment of shocks is difficult due to the increasing discontinuity and methods fail as the gradient grows.
+    <li> Traditional schemes like Finite Elements and Finite Volumes don't work well 
+    <li> Replaced by the Gudonov method to obtain correct solutions up until shock formation
+    <li> Once the shock has formed, many numerical schemes no longer perform well
+</ul>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="http://laurent.nack.pagesperso-orange.fr/burgers/graph1.gif" alt="Image of Shock">
+Image from <a href="http://laurent.nack.pagesperso-orange.fr/burgers/burger.htm">http://laurent.nack.pagesperso-orange.fr/burgers/burger.htm</a></p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="--Numerically-Solving-the-LWR-Equation-"><font color="Tomato"> <u> Numerically Solving the LWR Equation </u></font><a class="anchor-link" href="#--Numerically-Solving-the-LWR-Equation-">&#182;</a></h3><p><b>1D space on an x-grid</b> that goes from 0 to 1.</p>
+<p><b>periodic boundary conditions</b> which amounts to solving traffic flow on a <b>circular road</b> with neither exits nor entrances:</p>
+<p>\begin{equation}
+    \rho(x+1) = \rho(x)
+\end{equation}</p>
+<p>Subjected to the initial conditions:</p>
+<p>\begin{equation}
+    \rho(t=0,x) = 0.2 + 0.1sin(2\pi x)
+\end{equation}</p>
+<p>The density $\rho&gt;0$ $\forall$ x and stays that way $\forall$ t. NOTE: Negative density of cars is unphysical.</p>
+<p>The total <b>integration time, T = 1</b> with the <b>number of grid points = N</b></p>
+<p>The time increment <b>$\Delta t=\frac{1}{N}=\frac{1}{100} $</b> and spatial increment, <b>$\Delta x=\frac{1}{N}=\frac{1}{100}$</b>.</p>
+<p>Since we consider a 1D circular road with no output or input flux of cars, the <b>total number of cars on the road = M, should stay constant in time</b>:</p>
+<p>\begin{equation}
+    M(t) = \int_{0}^{1} \rho(t,x)dx = \sum_{i=0}^{1} \rho(t,x_i) 
+\end{equation}</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="--CFL-Condition-"><font color="Tomato"> <u> CFL Condition </u></font><a class="anchor-link" href="#--CFL-Condition-">&#182;</a></h3><p>The <b>Courant-Friedrichs-Lewy condition</b> is a condition for the convergence of numerical methods for partial differential equations.</p>
+<p>It states:<b>the numerical domain of dependence must include the physical domain of dependence</b>.</p>
+<p>The analytical domain of dependence for the WLR equation is $c\Delta t$: the distance a wave can travel during time step $\Delta t$.</p>
+<p>The numerical domain of dependence is $\Delta x$, since in all schemes used here, interaction happens with nearest neighbours. This results in the CFL condition of</p>
+<p>\begin{equation}
+    (1-2\rho) \frac{\Delta t}{\Delta x} \leq 1.
+\end{equation}</p>
+<p>If the condition is violated, information is lost in the simulation that is contained in the original WLR equation. This loss of information impedes convergence and often destabilizes the scheme.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="--Overview-"><font color="Tomato"> <u> Overview </u></font><a class="anchor-link" href="#--Overview-">&#182;</a></h3><p>We simulate the solution to this equation using different schemes and compare our results:</p>
+<ol>
+    <li> <b>Finite Element Schemes </b>
+        <ol>
+            <li> Lax-Wendroff
+            <li> Lax-Friedrichs
+        </ol>
+    <li> <b>Finite Volume Schemes </b>
+        <ol>
+            <li> Lax-Wendroff
+            <li> Lax-Friedrichs
+        </ol>
+    <li> <b>Gudonov Method</b>
+    <li> <b>Lagrange Method</b>
+</ol><p>We also discuss the following:</p>
+<ol>
+    <li>Dispersive and/or the dissipative nature of these schemes
+    <li> Their <b>stability</b>
+    <li><b>Modified wavenumber</b> analysis
+    <li>The <b>truncation error</b> 
+    <li>The <b>order of accuracy</b>
+    <li><b>Dependence of the error on the grid size</b> in time and space
+</ol>
 </div>
 </div>
 </div></section></section><section><section>
@@ -20852,6 +21079,25 @@ xAAAAABJRU5ErkJggg==
 
 </div>
 </div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="--References-"><font color="Tomato"> <center> References </center></font><a class="anchor-link" href="#--References-">&#182;</a></h2><p><i>
+[1] Holmes, E. E., Lewis, M. A., Banks, J. E. and Veit, R. R. (1994), Partial Differential Equations in Ecology: Spatial Interactions and Population Dynamics. Ecology, 75: 17–29. doi:10.2307/1939378</p>
+<p>[2] May, R. M. (1976). Simple mathematical models with very complicated dynamics. Nature, 261, 459. Retrieved from <a href="http://dx.doi.org/10.1038/261459a0">http://dx.doi.org/10.1038/261459a0</a></p>
+<p>[3] Godunov, S. K. (n.d.). Finite Difference Method for Numerical Computation of Discontinuous Solutions of the Equations of Fluid Dynamics.</p>
+<p>[4] Treiber, M., and Kesting, A. (2013). Traffic Flow Dynamics. Traffic Flow Dynamics. <a href="http://doi.org/10.1007/978-3-642-32460-4">http://doi.org/10.1007/978-3-642-32460-4</a></p>
+<p>[5] Helbing, D. (2001). Traffic and related self-driven many-particle systems. Reviews of Modern Physics, 73(4), 1067–1141. <a href="http://doi.org/10.1103/RevModPhys.73.1067">http://doi.org/10.1103/RevModPhys.73.1067</a></p>
+<p>[6] M.J.Lighthill, G.B.Whitham, On kinematic waves II: A theory of traffic flow on long, crowded roads. Proceedings of the Royal Society of London Series A 229, 317-345, 1955</p>
+<p>[7] Laney, C. B. (1998). Computational gasdynamics. Cambridge university press.</p>
+<p>[8] Godunov, S. K. (1959). A difference method for numerical calculation of discontinuous solutions of the equations of hydrodynamics. Matematicheskii Sbornik, 89(3), 271-306.</p>
+<p>[9] Toro, E. F. (2013). Riemann solvers and numerical methods for fluid dynamics: a practical introduction. Springer Science and Business Media.</p>
+<p>&lt;/i&gt;</p>
+
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -20865,8 +21111,8 @@ require(
       waitSeconds: 15
     },
     [
-      "reveal.js/lib/js/head.min.js",
-      "reveal.js/js/reveal.js"
+      "Desktop\ENS\Computational-Physics\TrafficJam\reveal.js/lib/js/head.min.js",
+      "Desktop\ENS\Computational-Physics\TrafficJam\reveal.js/js/reveal.js"
     ],
 
     function(head, Reveal){
@@ -20881,9 +21127,9 @@ require(
 
             // Optional libraries used to extend on reveal.js
             dependencies: [
-                { src: "reveal.js/lib/js/classList.js",
+                { src: "Desktop\ENS\Computational-Physics\TrafficJam\reveal.js/lib/js/classList.js",
                   condition: function() { return !document.body.classList; } },
-                { src: "reveal.js/plugin/notes/notes.js",
+                { src: "Desktop\ENS\Computational-Physics\TrafficJam\reveal.js/plugin/notes/notes.js",
                   async: true,
                   condition: function() { return !!document.body.classList; } }
             ]

@@ -1,0 +1,1413 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+	
+    
+\documentclass[11pt]{article}
+
+    
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    
+
+    
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{Traffic Flow}
+    \author{Moshir Harsh \& Rob Hesselink}
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \section{Traffic Flow with PDEs}\label{traffic-flow-with-pdes}
+
+\subsubsection{ICFP M1 Numercial Physics Project
+2017-2018}\label{icfp-m1-numercial-physics-project-2017-2018}
+
+  
+
+    \subsubsection{Introduction}\label{introduction}
+
+Physical systems have been modeled using partial differential equations
+(PDEs) by physicists over centuries to enhance their understanding and
+to make predictions. Most physical quantities such as density,
+temperature or velocity are continuous functions of the variables at a
+mesoscopic or a larger length scale and PDEs accurately describe the
+solutions to these physical quantities.
+
+Other quantities which occur discretely in nature like number of animals
+can also be approximated by continuous functions like population. They
+can be modelled by PDEs\(^1\) in the limit of large numbers. Difference
+Equations, which are analogues of PDEs in the discrete domain, are
+strictly speaking a better description of these systems but modelling
+them by PDEs instead offer several advantages and ease of calculation.
+For a wide class of PDEs analytical solutions or general analytical
+results can be derived, which is not the case for difference equations.
+Difference equations also very frequently run into the domain of
+chaos\(^2\), even in 1D, and the solutions no longer are well behaved.
+For PDEs, chaos is not observed in at least 2 dimensions and solutions
+are better behaved. For most cases in the limit of large numbers, the
+solutions offered by PDEs are close to those obtained from difference
+equations. This strategy has been fairly successful, especially in the
+fields of population ecology and modelling traffic\(^{1,4}\).
+
+After the 1950s, due to a rapid increase in the number of personal
+vehicles, the freeways and roads experienced major traffic jams and
+delays in transportation cost billions\(^4\). From then on it became
+important to understand the nature of traffic jams, how they arise and
+disperse, and what could be done to avoid them. Mathematical modeling of
+traffic jams was the approach the physicists took to understand this
+problem and has since resulted in numerous publications and insights in
+understanding traffic flow\(^5\).
+
+The equations describing traffic flow are non-linear and the solutions
+of which can show surprising features such as discontinuities called
+shocks. The analytical solutions to these equations are rare and
+generally numerical methods have to be carefully used to obtain any
+solutions. The solutions to these equations are not only interesting
+from their application point of view but also to the numerical physics
+community, for these equations present an opportunity to learn more
+about non-linearity and how the numerical schemes can be improved.
+
+\subsubsection{Mathematical Models and Lighthill--Whitham--Richards
+(LWR)
+Equation}\label{mathematical-models-and-lighthillwhithamrichards-lwr-equation}
+
+Traffic models can be studies in analogy with with fluid flow models.
+Cars can be coarse grained and modelled as a fluid described by a
+density field \(\rho(\vec{x})\) and with a velocity field \(u(\vec{x})\)
+which corresponds to the literal density of cars at \(\vec{x}\) and the
+velocity of cars at \(\vec{x}\). Our objective is to determine
+\(\rho(t,\vec{x})\) and \(u(t,\vec{x})\) given appropriate boundary
+conditions. These quantities can be obtained as the solution to a PDE
+which relates the time and space evolution of density and velocity under
+the appropriate physical law governing the traffic flow.
+
+To understand traffic flow, we make an assumption on the velocity u as a
+function of the density \(\rho\). Physically at low densities, the cars
+will go at high velocities with \(v_0\) being the maximum velocity, but
+if the density of cars get high, the velocity of cars will decrease
+linearly due to congestion, becoming 0 at \(\rho = \rho_0\). Here we
+study 1-dimensional traffic flow. This was the key assumption of the
+Lighthill--Whitham--Richards (LWR) model. The velocity in the LWR model
+is defined as:
+
+\begin{equation}
+    u = v_0\left(1-\frac{\rho}{\rho_0}\right)
+\end{equation}
+
+For our treatment we consider a circular road with no input nor output
+flux of cars. Then, trivially the number of cars should be conserved in
+time. Thus, the continuity equation for an incompressible fluid, which
+says that the change in the number of cars in a small volume in a small
+time must be equal to the difference of the flux of cars coming in and
+going out in the small volume in that time, must describe the time
+evolution of density:
+
+\begin{equation}
+    \frac{\partial \rho}{\partial t} + \frac{\partial (\rho u)}{\partial x} = 0
+\end{equation}
+
+Combining these two we get:
+
+\begin{equation}
+ \frac{\partial \rho}{\partial t} + \frac{\partial}{\partial x}\left[ v_0 \left(1-\frac{\rho}{\rho_0}\right)\rho \right] = 0 
+\end{equation}
+
+where \(v_0\) and \(\rho_0\) are the parameters which are set to one
+without loss of generality. So the equation becomes:
+
+\begin{equation}
+    \frac{\partial \rho}{\partial t} + \frac{\partial}{\partial x}\left[ \left(1-\rho\right)\rho \right] = 0
+\end{equation}
+
+This equation can also be written as:
+
+\begin{equation}
+    \frac{\partial \rho}{\partial t} + \left(1-2\rho\right)\frac{\partial \rho}{\partial x} = 0
+\end{equation}
+
+This is the simplest Lighthill--Whitham--Richards LWR model. This
+equation is also known as the inviscid Burgers' equation which form huge
+discontinuities commonly referred to as shock.
+
+The LWR equation was developed in 1955 and 1956 by Lighthill and
+Whitham, and independently also by Richards\(^6\). In addition to the
+continuity equation, their key assumption was that the traffic flow
+\(Q(x,t) = \rho(x,t)u(x,t)\), or speed \(u(x,t) = u(\rho(x,t))\) is
+always in local equilibrium with respect to the density: Traffic flow
+and local speed instantaneously follow the density, not only for
+steady-state traffic but in all situations\(^4\).
+
+The exact form of \(u(\rho(x,t))\) was not defined originally and is
+obtained by experimental fitting the data or by simple assumptions like
+the linear decrease of velocity with density, which we have used for our
+analysis.
+
+\paragraph{Advection Equation}\label{advection-equation}
+
+The Burgers' equation belong to a much bigger class of Advection
+Equations which are hyperbolic partial differential equations and are
+notorious for numerical schemes to handle due to shocks.
+
+An advection equation arrises when a scalar field (here being density)
+is advected (transported by bulk motion) by a vector field (here being
+the velocity). Related quantities like Energy are also advected with the
+scalar field. The LWR equation is more complex than a simple advection
+equation because unlike the Advection equation where the velocity is
+constant, the velocity here depends on the density.
+
+\subsubsection{Burgers' Equation and
+Shocks}\label{burgers-equation-and-shocks}
+
+In Burgers' equation the propagation velocity decreases with density,
+this results in highly dense and slowly moving regions, and rare and
+highly mobile regions which propagate as a shock wave. Suppose we start
+from a sin modulation of density, the low density areas where sin is
+minimum will move faster towards the high density areas, and the high
+density areas where sin is maximum will move slowly. As a result the
+wave will get distorted because mass from low density areas moves faster
+and accumulates while the high density areas cannot disperse their mass.
+
+This results in steep gradient or a discontinuity in \(\rho\), which
+propagates at a velocity, called a shock wave as shown in the figure.
+The numerical treatment of shocks is difficult due to the increasing
+discontinuity and methods fail as the gradient grows. Traditional
+schemes like Finite Elements and Finite Volumes don't work well and have
+to replaced by the Gudonov method to obtain correct solutions up until
+shock formation. Once the shock has formed, many numerical schemes no
+longer perform well.
+
+
+Image from http://laurent.nack.pagesperso-orange.fr/burgers/burger.htm
+
+The shock propagates with a constant velocity which can be obtained by
+simple analysis\(^4\):
+
+\begin{equation}
+    c_{12} = \frac{dX_{12}}{dt} = v_0 \left[ 1-\left( \frac{\rho_1+\rho_2}{\rho_0} \right)\right]     
+\end{equation}
+
+where \(\rho_1\) and \(\rho_2\) are the densities at the two sides of
+the shock wave and \(v_0\) and \(\rho_0\) were defined earlier.
+
+ Shockfront velocity. Image from\(^3\).
+
+\subsubsection{Numerically Solving the LWR
+Equation}\label{numerically-solving-the-lwr-equation}
+
+The LWR Equation in the last form is solved on a 1D space on an x-grid
+that goes from 0 to 1 with periodic boundary conditions which amounts to
+solving traffic flow on a circular road with neither exits nor
+entrances:
+
+\begin{equation}
+    \rho(x+1) = \rho(x)
+\end{equation}
+
+Subjected to the initial conditions:
+
+\begin{equation}
+    \rho(t=0,x) = 0.2 + 0.1sin(2\pi x)
+\end{equation}
+
+Which assumes a constant density of cars at \(\rho=0.2\) over which we
+have a sin modulation of density of amplitude 0.1. The density
+\(\rho>0\) \(\forall\) x and stays that way \(\forall\) t. NOTE:
+Negative density of cars is unphysical.
+
+The total integration time, T = 1 with the number of grid points = N,
+the time increment $\Delta t=\frac{1}{N}=\frac{1}{100}
+(</b> and spatial increment, <b>)\Delta x=\frac{1}{N}=\frac{1}{100}$.
+
+Since we consider a 1D circular road with no output or input flux of
+cars, the total number of cars on the road = M, should stay constant in
+time:
+
+\begin{equation}
+    M(t) = \int_{0}^{1} \rho(t,x)dx = \sum_{i=0}^{1} \rho{t,x_i} 
+\end{equation}
+
+Evaluating M(t) is one way to check the accuracy of our numerical
+schemes. Schemes such as finite element are dispersive or dissipative
+and usually do not conserve M, and that's why we have to use either
+finite volume schemes which are conservative in nature.
+
+\subsubsection{CFL Condition}\label{cfl-condition}
+
+The Courant-Friedrichs-Lewy condition is a condition for the convergence
+of numerical methods for partial differential equations. It states:
+\(\textit{the numerical domain of dependence must include the physical domain of dependence}^7\).
+The analytical domain of dependence for the WLR equation is
+\(c\Delta t\): the distance a wave can travel during time step
+\(\Delta t\). The numerical domain of dependence is \(\Delta x\), since
+in all schemes used here, interaction happens with nearest neighbours.
+This results in the CFL condition of
+
+\begin{equation}
+    (1-2\rho) \frac{\Delta t}{\Delta x} \leq 1.
+\end{equation}
+
+If the condition is violated, information is lost in the simulation that
+is contained in the original WLR equation. This loss of information
+impedes convergence and often destabilizes the scheme.
+
+\subsubsection{Overview}\label{overview}
+
+We simulate the solution to this equation using different schemes and
+compare our results:
+
+\begin{verbatim}
+<li> <b>Finite Element Schemes </b>
+    <ol>
+        <li> Lax-Wendroff
+        <li> Lax-Friedrichs
+    </ol>
+<li> <b>Finite Volume Schemes </b>
+    <ol>
+        <li> Lax-Wendroff
+        <li> Lax-Friedrichs
+    </ol>
+<li> <b>Gudonov Method</b>
+<li> <b>Lagrange Method</b>
+\end{verbatim}
+
+We also discuss the dispersive and/or the dissipative nature of these
+schemes, their stability also demonstrate the modified wavenumber
+analysis for one of the cases. We also calculate the truncation error
+for most of the schemes and calculate the order of accuracy. We finish
+by presenting some results on the dependence of the error on the grid
+size in time and space.
+
+\subsubsection{References}\label{references}
+
+ {[}1{]} Holmes, E. E., Lewis, M. A., Banks, J. E. and Veit, R. R.
+(1994), Partial Differential Equations in Ecology: Spatial Interactions
+and Population Dynamics. Ecology, 75: 17--29. doi:10.2307/1939378
+
+{[}2{]} May, R. M. (1976). Simple mathematical models with very
+complicated dynamics. Nature, 261, 459. Retrieved from
+http://dx.doi.org/10.1038/261459a0
+
+{[}3{]} Godunov, S. K. (n.d.). Finite Difference Method for Numerical
+Computation of Discontinuous Solutions of the Equations of Fluid
+Dynamics.
+
+{[}4{]} Treiber, M., and Kesting, A. (2013). Traffic Flow Dynamics.
+Traffic Flow Dynamics. http://doi.org/10.1007/978-3-642-32460-4
+
+{[}5{]} Helbing, D. (2001). Traffic and related self-driven
+many-particle systems. Reviews of Modern Physics, 73(4), 1067--1141.
+http://doi.org/10.1103/RevModPhys.73.1067
+
+{[}6{]} M.J.Lighthill, G.B.Whitham, On kinematic waves II: A theory of
+traffic flow on long, crowded roads. Proceedings of the Royal Society of
+London Series A 229, 317-345, 1955
+
+{[}7{]} Laney, C. B. (1998). Computational gasdynamics. Cambridge
+university press.
+
+{[}8{]} Godunov, S. K. (1959). A difference method for numerical
+calculation of discontinuous solutions of the equations of
+hydrodynamics. Matematicheskii Sbornik, 89(3), 271-306.
+
+{[}9{]} Toro, E. F. (2013). Riemann solvers and numerical methods for
+fluid dynamics: a practical introduction. Springer Science \& Business
+Media.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} UNIVERSAL (ALWAYS RUN FIRST)}
+        
+        \PY{c+c1}{\PYZsh{}Importing Packages}
+        \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+        \PY{c+c1}{\PYZsh{}matplotlib inline}
+        \PY{k+kn}{from} \PY{n+nn}{matplotlib} \PY{k}{import} \PY{n}{animation}\PY{p}{,} \PY{n}{rc}
+        \PY{k+kn}{from} \PY{n+nn}{IPython}\PY{n+nn}{.}\PY{n+nn}{display} \PY{k}{import} \PY{n}{HTML}
+        
+        \PY{c+c1}{\PYZsh{}Parameters:}
+        \PY{n}{N} \PY{o}{=} \PY{l+m+mf}{100.}
+        \PY{n}{dx} \PY{o}{=} \PY{l+m+mi}{1}\PY{o}{/}\PY{n}{N}
+        \PY{n}{dt} \PY{o}{=} \PY{l+m+mi}{1}\PY{o}{/}\PY{n}{N}
+        \PY{n}{T} \PY{o}{=} \PY{l+m+mf}{1.}
+        \PY{n}{v0} \PY{o}{=} \PY{l+m+mi}{1}
+        \PY{n}{rho0} \PY{o}{=} \PY{l+m+mi}{1}
+        \PY{n}{L\PYZus{}factor} \PY{o}{=} \PY{l+m+mi}{100} \PY{c+c1}{\PYZsh{}Factor for the Langrangian solution.}
+        
+        \PY{c+c1}{\PYZsh{}defining grid.}
+        \PY{n}{x0} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{n}{dx}\PY{p}{)}
+        \PY{n}{xL0} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{dx}\PY{o}{/}\PY{n}{L\PYZus{}factor}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}Initial Conditions: Here we define various initial }
+        \PY{c+c1}{\PYZsh{}conditions, only uncomment the one to be used.}
+        
+        \PY{c+c1}{\PYZsh{}Sin Wave}
+        \PY{n}{p0} \PY{o}{=}  \PY{l+m+mf}{0.2} \PY{o}{+} \PY{l+m+mf}{0.1}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{sin}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{p}{,} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{o}{*}\PY{n}{dx}\PY{p}{)}\PY{p}{)}
+        \PY{n}{pL} \PY{o}{=} \PY{l+m+mf}{0.2} \PY{o}{+} \PY{l+m+mf}{0.1}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{sin}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{p}{,} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{o}{*}\PY{n}{dx}\PY{o}{/}\PY{n}{L\PYZus{}factor}\PY{p}{)}\PY{p}{)}
+        
+        
+        \PY{c+c1}{\PYZsh{}Block}
+        \PY{c+c1}{\PYZsh{}p0 = 0.2*np.ones(int(N))}
+        \PY{c+c1}{\PYZsh{}p0[20:30] = 0.4}
+        \PY{c+c1}{\PYZsh{}pL = 0.2*np.ones(int(N)*L\PYZus{}factor)}
+        \PY{c+c1}{\PYZsh{}pL[20*L\PYZus{}factor:30*L\PYZus{}factor] = 0.4}
+        
+        \PY{c+c1}{\PYZsh{}Gauss}
+        \PY{c+c1}{\PYZsh{}def Gauss(x):}
+        \PY{c+c1}{\PYZsh{}    return .2*np.exp(\PYZhy{}(x \PYZhy{} .4)**2/.03)}
+        \PY{c+c1}{\PYZsh{}p0 = .2 + Gauss(x0)}
+        \PY{c+c1}{\PYZsh{}pL = .2 + Gauss(xL0)}
+        
+        
+        
+        \PY{k}{class} \PY{n+nc}{variable}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Class to allow variables to be used and reset afterwards\PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{k}{def} \PY{n+nf}{\PYZus{}\PYZus{}init\PYZus{}\PYZus{}}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{value}\PY{p}{)}\PY{p}{:}        
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{backup} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{copy}\PY{p}{(}\PY{n}{value}\PY{p}{)}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{v} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{copy}\PY{p}{(}\PY{n}{value}\PY{p}{)}
+            
+            \PY{k}{def} \PY{n+nf}{update}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{function}\PY{p}{)}\PY{p}{:}
+                \PY{k}{if} \PY{n}{function}\PY{o}{.}\PY{n}{str} \PY{o}{==} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Lagrange}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:}
+                    \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{v} \PY{o}{=} \PY{n}{function}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{v}\PY{p}{,} \PY{n}{pL}\PY{p}{)}
+                \PY{k}{else}\PY{p}{:}
+                    \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{v} \PY{o}{=} \PY{n}{function}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{v}\PY{p}{)}
+                \PY{k}{return} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{v}
+        
+            \PY{k}{def} \PY{n+nf}{reset}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{)}\PY{p}{:}
+                \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{v} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{copy}\PY{p}{(}\PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{backup}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{}Creating global variables.}
+        \PY{n}{p} \PY{o}{=} \PY{n}{variable}\PY{p}{(}\PY{n}{p0}\PY{p}{)}
+        \PY{n}{xL} \PY{o}{=} \PY{n}{variable}\PY{p}{(}\PY{n}{xL0}\PY{p}{)}
+        
+        \PY{k}{def} \PY{n+nf}{reset}\PY{p}{(}\PY{n}{variables} \PY{o}{=} \PY{p}{[}\PY{n}{p}\PY{p}{,}\PY{n}{xL}\PY{p}{]}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Resets variables to their original values\PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{k}{for} \PY{n}{variable} \PY{o+ow}{in} \PY{n}{variables}\PY{p}{:}
+                \PY{n}{variable}\PY{o}{.}\PY{n}{reset}\PY{p}{(}\PY{p}{)}
+            \PY{k}{return} \PY{l+m+mi}{0}
+        
+        \PY{c+c1}{\PYZsh{} Helper functions}
+        \PY{k}{def} \PY{n+nf}{flux}\PY{p}{(}\PY{n}{shift}\PY{p}{,} \PY{n}{p}\PY{p}{)}\PY{p}{:}    
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} Helper function for conservative schemes. \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{k}{if} \PY{n}{shift} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{:}
+                \PY{k}{return} \PY{n}{v0}\PY{o}{*}\PY{p}{(}\PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{n}{p}\PY{o}{/}\PY{n}{rho0}\PY{p}{)}\PY{o}{*}\PY{n}{p}
+            \PY{k}{else}\PY{p}{:}
+                \PY{k}{return} \PY{n}{v0}\PY{o}{*}\PY{p}{(}\PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{n}{np}\PY{o}{.}\PY{n}{roll}\PY{p}{(}\PY{n}{p}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{n}{shift}\PY{p}{)}\PY{o}{/}\PY{n}{rho0}\PY{p}{)}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{roll}\PY{p}{(}\PY{n}{p}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{n}{shift}\PY{p}{)}
+        
+        \PY{k}{def} \PY{n+nf}{velocity}\PY{p}{(}\PY{n}{shift} \PY{o}{=} \PY{l+m+mi}{0}\PY{p}{,} \PY{n}{array}\PY{o}{=}\PY{n}{p}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} Helper function for Godunov scheme. \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{k}{if} \PY{n}{shift} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{:}
+                \PY{k}{return} \PY{n}{v0}\PY{o}{*}\PY{p}{(}\PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{n}{array}\PY{o}{/}\PY{n}{rho0}\PY{p}{)}
+            \PY{k}{else}\PY{p}{:}
+                \PY{k}{return} \PY{n}{v0}\PY{o}{*}\PY{p}{(}\PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{n}{np}\PY{o}{.}\PY{n}{roll}\PY{p}{(}\PY{n}{array}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{n}{shift}\PY{p}{)}\PY{o}{/}\PY{n}{rho0}\PY{p}{)}
+            
+            
+        \PY{k}{def} \PY{n+nf}{animate}\PY{p}{(}\PY{n}{i}\PY{p}{,} \PY{n}{scheme}\PY{p}{,} \PY{n}{line}\PY{p}{,} \PY{n}{mass}\PY{p}{,} \PY{n}{time}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Animation function. Runs the schemes.\PYZdq{}\PYZdq{}\PYZdq{}}
+            
+            \PY{c+c1}{\PYZsh{}Runs the schemes and sets data to lines.}
+            \PY{k}{if} \PY{n}{scheme}\PY{o}{.}\PY{n}{str} \PY{o}{==} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Lagrange}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:}
+                \PY{n}{xL}\PY{o}{.}\PY{n}{update}\PY{p}{(}\PY{n}{scheme}\PY{p}{)}
+                \PY{n}{line}\PY{o}{.}\PY{n}{set\PYZus{}data}\PY{p}{(}\PY{n}{xL}\PY{o}{.}\PY{n}{v}\PY{p}{,} \PY{n}{pL}\PY{p}{)}
+            \PY{k}{else}\PY{p}{:}
+                \PY{n}{p}\PY{o}{.}\PY{n}{update}\PY{p}{(}\PY{n}{scheme}\PY{p}{)}
+                \PY{n}{line}\PY{o}{.}\PY{n}{set\PYZus{}data}\PY{p}{(}\PY{n}{x0}\PY{p}{,} \PY{n}{p}\PY{o}{.}\PY{n}{v}\PY{p}{)}
+            
+            \PY{c+c1}{\PYZsh{}Adds time and total mass to the plots.}
+            \PY{n}{time}\PY{o}{.}\PY{n}{set\PYZus{}text}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{T = }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{}.2f}\PY{l+s+s2}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{p}{(}\PY{n}{i}\PY{o}{*}\PY{n}{dt}\PY{p}{)}\PY{p}{)} 
+            \PY{n}{mass}\PY{o}{.}\PY{n}{set\PYZus{}text}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{M = }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{}.2f}\PY{l+s+s2}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{n}{p}\PY{o}{.}\PY{n}{v}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+            \PY{k}{return} \PY{n}{line}\PY{p}{,} \PY{n}{time}\PY{p}{,} \PY{n}{mass}
+            
+        \PY{k}{def} \PY{n+nf}{run}\PY{p}{(}\PY{n}{scheme}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} Helper function to run and animate different schemes. \PYZdq{}\PYZdq{}\PYZdq{}}  
+            \PY{c+c1}{\PYZsh{}Set up figure.}
+            \PY{n}{fig}\PY{p}{,} \PY{n}{ax} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+        
+            \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlim}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+            \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylim}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{o}{.}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{)}
+            \PY{n}{line}\PY{p}{,} \PY{o}{=} \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{p}{[}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{,} \PY{n}{lw}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{)}
+            \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZdl{}}\PY{l+s+s1}{\PYZbs{}}\PY{l+s+s1}{rho\PYZdl{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{x}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{n}{time} \PY{o}{=} \PY{n}{ax}\PY{o}{.}\PY{n}{annotate}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{xy}\PY{o}{=}\PY{p}{(}\PY{o}{.}\PY{l+m+mi}{75}\PY{p}{,} \PY{o}{.}\PY{l+m+mi}{45}\PY{p}{)}\PY{p}{)}
+            \PY{n}{mass} \PY{o}{=} \PY{n}{ax}\PY{o}{.}\PY{n}{annotate}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{xy}\PY{o}{=}\PY{p}{(}\PY{o}{.}\PY{l+m+mi}{75}\PY{p}{,} \PY{o}{.}\PY{l+m+mi}{42}\PY{p}{)}\PY{p}{)}
+            
+            \PY{k}{if} \PY{n}{scheme}\PY{o}{.}\PY{n}{str} \PY{o}{==} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Lagrange}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:}
+                \PY{n}{line}\PY{o}{.}\PY{n}{set\PYZus{}linestyle}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{none}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+                \PY{n}{line}\PY{o}{.}\PY{n}{set\PYZus{}marker}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{o}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+                \PY{n}{line}\PY{o}{.}\PY{n}{set\PYZus{}markersize}\PY{p}{(}\PY{o}{.}\PY{l+m+mi}{06}\PY{p}{)}
+            
+            \PY{c+c1}{\PYZsh{}Plot initial condition for reference.}
+            \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x0}\PY{p}{,} \PY{n}{p0}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZhy{}\PYZhy{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            
+            \PY{c+c1}{\PYZsh{}Run animation.}
+            \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{n}{scheme}\PY{o}{.}\PY{n}{str}\PY{p}{)}
+            \PY{n}{anim} \PY{o}{=} \PY{n}{animation}\PY{o}{.}\PY{n}{FuncAnimation}\PY{p}{(}\PY{n}{fig}\PY{p}{,} \PY{n}{animate}\PY{p}{,} \PY{n}{fargs}\PY{o}{=}\PY{p}{(}\PY{n}{scheme}\PY{p}{,} \PY{n}{line}\PY{p}{,} \PY{n}{mass}\PY{p}{,} \PY{n}{time}\PY{p}{)}\PY{p}{,}
+                                       \PY{n}{frames}\PY{o}{=}\PY{n+nb}{int}\PY{p}{(}\PY{n}{T}\PY{o}{/}\PY{n}{dt}\PY{p}{)}\PY{p}{,} \PY{n}{interval}\PY{o}{=}\PY{l+m+mi}{50}\PY{p}{,} \PY{n}{blit}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+            \PY{n}{rc}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{animation}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{html}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{html5}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            
+            \PY{c+c1}{\PYZsh{}Close figure and reset before returning.}
+            \PY{n}{plt}\PY{o}{.}\PY{n}{close}\PY{p}{(}\PY{n}{anim}\PY{o}{.}\PY{n}{\PYZus{}fig}\PY{p}{)}
+            \PY{n}{reset}\PY{p}{(}\PY{p}{)}
+            \PY{k}{return} \PY{n}{HTML}\PY{p}{(}\PY{n}{anim}\PY{o}{.}\PY{n}{to\PYZus{}html5\PYZus{}video}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \subsection{Finite Element Methods}\label{finite-element-methods}
+
+    \subsubsection{\texorpdfstring{Lax-Friedrichs
+\(\mathcal{O}(\Delta t, \frac{\Delta x^2}{\Delta t})\)}{Lax-Friedrichs \textbackslash{}mathcal\{O\}(\textbackslash{}Delta t, \textbackslash{}frac\{\textbackslash{}Delta x\^{}2\}\{\textbackslash{}Delta t\})}}\label{lax-friedrichs-mathcalodelta-t-fracdelta-x2delta-t}
+
+\begin{equation}
+    u_x^{t+1} = \frac{u_{x+1}^t + u_{x-1}^t}{2} - (1 - 2u)\frac{\Delta t}{2 \Delta x}(u_{x+1}^t - u_{x-1}^t)
+\end{equation}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{k}{def} \PY{n+nf}{LF}\PY{p}{(}\PY{n}{p}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} Finite elements Lax\PYZhy{}Friedrichs scheme. \PYZdq{}\PYZdq{}\PYZdq{}}  
+            \PY{n}{A} \PY{o}{=} \PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{roll}\PY{p}{(}\PY{n}{p}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)} \PY{o}{+} \PY{n}{np}\PY{o}{.}\PY{n}{roll}\PY{p}{(}\PY{n}{p}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}\PY{o}{/}\PY{l+m+mf}{2.}
+            \PY{n}{B} \PY{o}{=} \PY{o}{\PYZhy{}}\PY{n}{dt}\PY{o}{*}\PY{p}{(}\PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{p}\PY{p}{)}\PY{o}{*}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{roll}\PY{p}{(}\PY{n}{p}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{np}\PY{o}{.}\PY{n}{roll}\PY{p}{(}\PY{n}{p}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}\PY{o}{/}\PY{p}{(}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{dx}\PY{p}{)}
+            \PY{k}{return} \PY{p}{(}\PY{n}{A} \PY{o}{+} \PY{n}{B}\PY{p}{)}
+        
+        \PY{n}{LF}\PY{o}{.}\PY{n}{str} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Lax\PYZhy{}Friedrichs}\PY{l+s+s2}{\PYZdq{}}
+        \PY{n}{run}\PY{p}{(}\PY{n}{LF}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}2}]:} <IPython.core.display.HTML object>
+\end{Verbatim}
+            
+    \subparagraph{Explanation:}\label{explanation}
+
+The Lax-Friedrichs scheme is created through a small alteration to the
+\(\delta_0\) scheme. By replacing \(u_x^t\) with the average of the two
+neighbouring cells, the instability can be avoided and the scheme
+becomes conditionally stable. The Lax-Friedrichs scheme for the WLR
+equation is:
+
+\begin{equation}
+    u_x^{t+1} = \frac{u_{x+1}^t + u_{x-1}^t}{2} - (1 - 2u)\frac{\Delta t}{2 \Delta x}(u_{x+1}^t - u_{x-1}^t)
+\end{equation}
+
+The condition for stability can be determined by the Von Neumann
+analysis below.
+
+\begin{align}
+    \xi &= \frac{e^{ik\Delta x} + e^{-ik\Delta x}}{2} - (1 - 2u)\frac{\Delta t}{2 \Delta x} \left(e^{ik\Delta x} - e^{ik\Delta x}\right) \\
+    &= \cos{k\Delta x} - \frac{\Delta t}{\Delta x}(1 - 2u) i \sin{k \Delta x}.
+ \end{align}
+
+To find our stability condition, we need to find the amplification
+factor
+
+\begin{align}
+     |\xi|^2 &= \cos^2{k\Delta x} + r^2 \sin^2{k\Delta x} \\ 
+             &= 1 - (1 - r^2)\sin^2{k\Delta x},
+ \end{align}
+
+where $ r \equiv \frac{\Delta t}{\Delta x}(1 - 2u) $. This shows that
+the scheme is stable as long as $ r \leq 1$. The newfound stability
+comes at a cost, as the Lax-Friedrichs scheme introduces second-order
+numerical dissipation to the equation. The average of neighbours on the
+RHS can be expanded as
+
+\begin{align}
+     \frac{u_{x+1}^t + u_{x-1}^t}{2} &= u_x^t + \frac{\Delta x^2}{2}\frac{\partial^2 u}{\partial x^2} + \mathcal{O}(x^4),
+ \end{align}
+
+and the numerical dissipation is identified as the second order
+derivative.
+
+\subparagraph{Accuracy:}\label{accuracy}
+
+\begin{equation}
+R_h = \frac{\Delta t}{2}\frac{\partial^2 u}{\partial t^2} + \frac{\Delta x^2}{6}\frac{\partial^3 u}{\partial x^3} + \frac{\Delta x^2}{2\Delta t}\frac{\partial^2 u}{\partial x^2} + \mathcal{O}(\Delta t^2, \Delta x^4)
+\end{equation}
+
+    \subsubsection{\texorpdfstring{Lax-Wendroff
+\(\mathcal{O}(\Delta t^2, \Delta x^2)\)}{Lax-Wendroff \textbackslash{}mathcal\{O\}(\textbackslash{}Delta t\^{}2, \textbackslash{}Delta x\^{}2)}}\label{lax-wendroff-mathcalodelta-t2-delta-x2}
+
+\begin{align}
+    u_x^{t+1} = u_x^t - \frac{\Delta t}{2 \Delta x}(u_{x+1}^t - u_{x-1}^t) + (1-2u)^2\frac{\Delta t^2}{2 \Delta x^2} (u_{x+1}^t - 2u_x^t + u_{x-1}^t). 
+ \end{align}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{k}{def} \PY{n+nf}{LW}\PY{p}{(}\PY{n}{p}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} Finite elements Lax\PYZhy{}Wendroff scheme. \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{n}{A} \PY{o}{=} \PY{o}{\PYZhy{}}\PY{p}{(}\PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{p}\PY{p}{)}\PY{o}{*}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{roll}\PY{p}{(}\PY{n}{p}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{np}\PY{o}{.}\PY{n}{roll}\PY{p}{(}\PY{n}{p}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}\PY{o}{/}\PY{p}{(}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{dx}\PY{p}{)}
+            \PY{n}{B} \PY{o}{=} \PY{n}{dt}\PY{o}{/}\PY{l+m+mi}{2}\PY{o}{*}\PY{p}{(}\PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{p}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{o}{*}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{roll}\PY{p}{(}\PY{n}{p}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{p} \PY{o}{+} \PY{n}{np}\PY{o}{.}\PY{n}{roll}\PY{p}{(}\PY{n}{p}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}\PY{o}{/}\PY{p}{(}\PY{n}{dx}\PY{o}{*}\PY{n}{dx}\PY{p}{)}
+            \PY{n}{p} \PY{o}{+}\PY{o}{=} \PY{n}{dt}\PY{o}{*}\PY{p}{(}\PY{n}{A} \PY{o}{+} \PY{n}{B}\PY{p}{)}
+            \PY{k}{return} \PY{n}{p}
+        
+        \PY{n}{LW}\PY{o}{.}\PY{n}{str} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Lax\PYZhy{}Wendroff}\PY{l+s+s2}{\PYZdq{}}
+        \PY{n}{run}\PY{p}{(}\PY{n}{LW}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}3}]:} <IPython.core.display.HTML object>
+\end{Verbatim}
+            
+    \subparagraph{Explanation:}\label{explanation}
+
+The Lax-Wendroff scheme is created by compensating explicitly for the
+dissipation in the \(\delta_0\) scheme. If we look at the truncation of
+both sides of \(\delta_0\), we can discover the dissipation term.
+
+\begin{align}
+    \frac{u_x^{t+1} - u_x^t}{\Delta t} &= \frac{\partial u}{\partial t} + \frac{\Delta t}{2}\frac{\partial^2 u}{\partial t^2} + \frac{\Delta t^2}{6} \frac{\partial^3 u}{\partial t^3} + \mathcal{O}(\Delta t^3)  \text{, and} \\
+    \frac{u_{x+1}^t - u_{x-1}^t}{2\Delta x} &= \frac{\partial u}{\partial x} + \frac{\Delta x^2}{6}\frac{\partial^3 u}{\partial x^3} +  \mathcal{O}(\Delta x^4).
+\end{align}
+
+The dissipation term is first-order and can be rewritten by using the
+WLR equation to read:
+
+\begin{align}
+    \frac{\Delta t}{2}\frac{\partial^2 u}{\partial t^2} &= -(1-2u)^2\frac{\Delta t}{2}\frac{\partial^2 u}{\partial x^2} \\
+    &= -(1-2u)^2\frac{\Delta t^2}{2 \Delta x^2} (u_{x+1}^t - 2u_x^t + u_{x-1}^t) + \mathcal{O}(\Delta x^2).
+\end{align}
+
+By subtracting this term from the \(\delta_0\) scheme, we are left with
+a dissipation-free second order scheme:
+
+\begin{align}
+    u_x^{t+1} = u_x^t - \frac{\Delta t}{2 \Delta x}(u_{x+1}^t - u_{x-1}^t) + (1-2u)^2\frac{\Delta t^2}{2 \Delta x^2} (u_{x+1}^t - 2u_x^t + u_{x-1}^t). 
+ \end{align}
+
+But alas, this scheme is still not perfect. As evidenced by the earlier
+identities for the truncation error, the leading-order truncation is now
+a dispersive term. Since the shockwave is nearly discontinuous, it
+requires a lot of fourier modes to be accurately represented. This is
+why the biggest discrepancy between the Lax-Wendroff solution and the
+other solutions is found around the shock wave.
+
+\subparagraph{Accuracy:}\label{accuracy}
+
+\begin{equation}
+R_h = \frac{\Delta t^2}{6} \frac{\partial^3 u}{\partial t^3} + \frac{\Delta x^2}{6}\frac{\partial^3 u}{\partial x^3} + \frac{\Delta x^2}{12}\frac{\partial^4 u}{\partial x^4} + \mathcal{O}(\Delta t^3, \Delta x^4)
+\end{equation}
+
+\subparagraph{Modified Wavenumber:}\label{modified-wavenumber}
+
+Another way to analyse the dispersive term is by looking at the modified
+wavenumber. Due to the discrete nature of the grid, waves consisting of
+high wavenumber \(k\) (and therefore short wavelength) will be poorly
+sampled. This introduces a modified wavenumber \(k'\). The expression
+for the modified wavenumber can be found by treating a Fourier mode
+\(f = e^{ikx}\) with the scheme in question. For the Lax-Wendroff scheme
+
+\begin{equation}
+    (1-2u)\frac{\partial u}{\partial x} \approx (1-2u)\frac{1}{2 \Delta x} (u_{x+1}^t - u_{x-1}^t) - (1-2u)^2\frac{\Delta t}{2 \Delta x^2} (u_{x+1}^t - 2u_x^t + u_{x-1}^t),
+\end{equation}
+
+this results in:
+
+\begin{align}
+    ik'f &=  \frac{1}{2 \Delta x}\left( e^{ik(x + \Delta x)} - e^{ik(x - \Delta x)}\right) - (1-2u)\frac{\Delta t}{2 \Delta x^2}\left(e^{ik(x + \Delta x)} -2e^{ikx} + e^{ik(x - \Delta x)}\right) \\
+    ik' & = i\frac{\sin(k\Delta x)}{\Delta x} - \Delta t(1-2u)\frac{\cos(k\Delta x) - 2}{2 \Delta x} \\
+    \frac{k'}{k}    &= \text{sinc}(k\Delta x) + 2i\Delta t(1-2u)\frac{\sin^2\left(\frac{k\Delta x}{2}\right)}{k\Delta x^2}.
+\end{align}
+
+Compared to the modified wavenumber for the \(\delta_0\) scheme, which
+gives
+
+\begin{equation}
+    \frac{k'}{k} = \text{sinc}(k\Delta x),
+\end{equation}
+
+the effect on wavenumber of Lax-Wendroff is much larger. See below for a
+comparison.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{k}{def} \PY{n+nf}{k\PYZus{}d0}\PY{p}{(}\PY{n}{k}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Calculates k change for delta zero scheme\PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{k}{return} \PY{n}{np}\PY{o}{.}\PY{n}{sin}\PY{p}{(}\PY{n}{k}\PY{o}{*}\PY{n}{dx}\PY{p}{)}\PY{o}{/}\PY{p}{(}\PY{n}{k}\PY{o}{*}\PY{n}{dx}\PY{p}{)}
+        
+        \PY{k}{def} \PY{n+nf}{k\PYZus{}LW}\PY{p}{(}\PY{n}{k}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Calculates k change for Lax\PYZhy{}Wendroff scheme\PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{k}{return} \PY{n}{np}\PY{o}{.}\PY{n}{abs}\PY{p}{(}\PY{n}{k\PYZus{}d0}\PY{p}{(}\PY{n}{k}\PY{p}{)} \PY{o}{+} \PY{l+m+mi}{2}\PY{n}{j}\PY{o}{*}\PY{n}{dt}\PY{o}{*}\PY{p}{(}\PY{l+m+mi}{1}\PY{o}{\PYZhy{}}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{u}\PY{p}{)}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{sin}\PY{p}{(}\PY{n}{k}\PY{o}{*}\PY{n}{dx}\PY{o}{/}\PY{l+m+mf}{2.}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{o}{/}\PY{p}{(}\PY{n}{k}\PY{o}{*}\PY{n}{dx}\PY{o}{*}\PY{n}{dx}\PY{p}{)}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{}Local density of cars. }
+        \PY{n}{u} \PY{o}{=} \PY{o}{.}\PY{l+m+mi}{1}
+        
+        \PY{n}{dk} \PY{o}{=} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{o}{/}\PY{n}{N}
+        \PY{n}{k} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{n}{dk}\PY{p}{,} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{p}{,} \PY{n}{dk}\PY{p}{)}
+        
+        \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{k}\PY{p}{,} \PY{n}{k\PYZus{}d0}\PY{p}{(}\PY{n}{k}\PY{p}{)}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZdl{}}\PY{l+s+s1}{\PYZbs{}}\PY{l+s+s1}{delta\PYZus{}0\PYZdl{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{k}\PY{p}{,} \PY{n}{k\PYZus{}LW}\PY{p}{(}\PY{n}{k}\PY{p}{)}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Lax\PYZhy{}Wendroff}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{k}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZdl{}k\PYZca{}}\PY{l+s+s1}{\PYZbs{}}\PY{l+s+s1}{prime/k\PYZdl{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Modified wavenumber for u = }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{u}\PY{p}{)}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_11_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsection{Finite Volume Methods}\label{finite-volume-methods}
+
+Finite volumes scheme approach a problem by creating small cell within
+the domain and taking the average value of \(u\) within that section.
+Changes in the system are then calculated by calculating the flux at the
+boundary of the cell. The advantage is that finite volumes schemes are
+inherently conservative. For the burger's equation, the flux can be
+identified in the continuity form of the WLR equation where, in discrete
+notation,
+\(f_x^t = v_0 \left(1-\frac{\rho_x^t}{\rho_0}\right)\rho_x^t\). All
+finite volume methods use
+
+\begin{align}
+    u_x^{t+1} = u_x^t -\frac{\Delta t}{\Delta x}\left(f_{x+\frac{1}{2}}^{t+\frac{1}{2}} - f_{x-\frac{1}{2}}^{t+\frac{1}{2}}\right),
+\end{align}
+
+and the difference lies in correctly identifying the flux at the
+boundaries.
+
+    \subsubsection{\texorpdfstring{Lax-Friedrichs
+\(\mathcal{O}(\Delta t, \Delta x)\)}{Lax-Friedrichs \textbackslash{}mathcal\{O\}(\textbackslash{}Delta t, \textbackslash{}Delta x)}}\label{lax-friedrichs-mathcalodelta-t-delta-x}
+
+\begin{align}
+    f_{x+\frac{1}{2}}^{t+\frac{1}{2}} = \frac{1}{2}(f_{x+1}^t + f_x^t) - \frac{\Delta x}{2\Delta t}(u_{x+1}^t - u_x^t), 
+\end{align}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{k}{def} \PY{n+nf}{LF\PYZus{}cons}\PY{p}{(}\PY{n}{p}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} Lax\PYZhy{}Friedrichs conservative scheme. \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{n}{f\PYZus{}left} \PY{o}{=} \PY{l+m+mf}{0.5}\PY{o}{*}\PY{p}{(}\PY{n}{flux}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{p}\PY{p}{)} \PY{o}{+} \PY{n}{flux}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{p}\PY{p}{)}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{dt}\PY{o}{/}\PY{p}{(}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{dx}\PY{p}{)}\PY{o}{*}\PY{p}{(}\PY{n}{p} \PY{o}{\PYZhy{}} \PY{n}{np}\PY{o}{.}\PY{n}{roll}\PY{p}{(}\PY{n}{p}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+            \PY{n}{f\PYZus{}right} \PY{o}{=} \PY{l+m+mf}{0.5}\PY{o}{*}\PY{p}{(}\PY{n}{flux}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{p}\PY{p}{)} \PY{o}{+} \PY{n}{flux}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{p}\PY{p}{)}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{dt}\PY{o}{/}\PY{p}{(}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{dx}\PY{p}{)}\PY{o}{*}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{roll}\PY{p}{(}\PY{n}{p}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{p}\PY{p}{)}
+        
+            \PY{n}{p} \PY{o}{+}\PY{o}{=} \PY{o}{\PYZhy{}}\PY{n}{dt}\PY{o}{/}\PY{n}{dx}\PY{o}{*}\PY{p}{(}\PY{n}{f\PYZus{}right} \PY{o}{\PYZhy{}} \PY{n}{f\PYZus{}left}\PY{p}{)}
+            \PY{k}{return} \PY{n}{p}
+        
+        \PY{n}{LF\PYZus{}cons}\PY{o}{.}\PY{n}{str} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Lax\PYZhy{}Friedrichs conservative}\PY{l+s+s2}{\PYZdq{}}
+        \PY{n}{run}\PY{p}{(}\PY{n}{LF\PYZus{}cons}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}5}]:} <IPython.core.display.HTML object>
+\end{Verbatim}
+            
+    \subparagraph{Explanation:}\label{explanation}
+
+The finite volumes version of the Lax-Friedrichs scheme is similar to
+its finite differences cousin. It replaces the \(u_x^t\) by the average
+of neighbours, but does so implicitly by defining the flux at the
+boundary as
+
+\begin{align}
+    f_{x+\frac{1}{2}}^{t+\frac{1}{2}} = \frac{1}{2}(f_{x+1}^t + f_x^t) - \frac{\Delta x}{2\Delta t}(u_{x+1}^t - u_x^t), 
+\end{align}
+
+which results in a final scheme of
+
+\begin{align}
+    u_x^{t+1} = \frac{u_{x+1}^t + u_{x-1}^t}{2} -\frac{\Delta t}{2\Delta x}\left(f_{x+1}^{t} - f_{x-1}^{t}\right).
+\end{align}
+
+Its stability and introduction of dissipation are the same as the finite
+differences version, given a sufficiently smooth solution.
+
+It is good to note that the only difference between the previous version
+is \((1-2u_x^t)\) by the appropriate neighbouring
+\(( 1-2u_{x \pm 1}^t)\). The above flux term can then be expanded to
+read
+
+\begin{align}
+    \frac{\Delta t}{2\Delta x}\left(f_{x+1}^{t} - f_{x-1}^{t}\right) &= \frac{\Delta t}{2\Delta x}\left[(1-2u_x^t)(u_{x+1}^t - u_{x-1}^t) - 2\Delta x\frac{\partial u}{\partial x}(u_{x+1}^t - u_{x-1}^t) + \right] + \mathcal{O}(\Delta x^3) \\
+    &= \frac{\Delta t}{2\Delta x}\left[(1-2u_x^t)(u_{x+1}^t - u_{x-1}^t) - \left(2\Delta x \frac{\partial u}{\partial x}\right)^2   \right] + \mathcal{O}(\Delta x^3) \\
+    &= \frac{\Delta t}{2\Delta x}(1-2u_x^t)(u_{x+1}^t - u_{x-1}^t) - 2\Delta x\Delta t\left(\frac{\partial u}{\partial x}\right)^2 + \mathcal{O}(\Delta x^3).
+\end{align}
+
+One can see that the conservative form adds, among others, a
+\(2\Delta t\Delta x\) term to the previous Lax-Friedrichs equation.
+
+\subparagraph{Accuracy:}\label{accuracy}
+
+\begin{equation}
+R_h = \frac{\Delta t}{2}\frac{\partial^2 u}{\partial t^2} + \frac{\Delta x^2}{6}\frac{\partial^3 u}{\partial x^3} + \frac{\Delta x^2}{2\Delta t}\frac{\partial^2 u}{\partial x^2} + 2\Delta x\Delta t\left(\frac{\partial u}{\partial x}\right)^2 + \mathcal{O}(\Delta t^2, \Delta x^3)
+\end{equation}
+
+    \subsubsection{\texorpdfstring{Lax-Wendroff
+\(\mathcal{O}(\Delta t^2, \Delta x^2)\)}{Lax-Wendroff \textbackslash{}mathcal\{O\}(\textbackslash{}Delta t\^{}2, \textbackslash{}Delta x\^{}2)}}\label{lax-wendroff-mathcalodelta-t2-delta-x2}
+
+\begin{align}
+    u_{x+\frac{1}{2}}^{t+\frac{1}{2}} = \frac{u_{x+1} + u_{x-1}^t}{2} - \frac{\Delta t}{2\Delta x}\left(f_{x+1}^t - f_{x}^t\right)
+\end{align}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{k}{def} \PY{n+nf}{LW\PYZus{}cons}\PY{p}{(}\PY{n}{p}\PY{p}{)}\PY{p}{:}    
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} Lax\PYZhy{}Wendroff conservative scheme. \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{n}{u\PYZus{}right} \PY{o}{=} \PY{l+m+mf}{0.5}\PY{o}{*}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{roll}\PY{p}{(}\PY{n}{p}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)} \PY{o}{+} \PY{n}{p}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{dt}\PY{o}{/}\PY{p}{(}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{dx}\PY{p}{)}\PY{o}{*}\PY{p}{(}\PY{n}{flux}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{p}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{flux}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{p}\PY{p}{)}\PY{p}{)}
+            \PY{n}{u\PYZus{}left}  \PY{o}{=} \PY{l+m+mf}{0.5}\PY{o}{*}\PY{p}{(}\PY{n}{p} \PY{o}{+} \PY{n}{np}\PY{o}{.}\PY{n}{roll}\PY{p}{(}\PY{n}{p}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}  \PY{o}{\PYZhy{}} \PY{n}{dt}\PY{o}{/}\PY{p}{(}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{dx}\PY{p}{)}\PY{o}{*}\PY{p}{(}\PY{n}{flux}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{p}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{flux}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{p}\PY{p}{)}\PY{p}{)}
+        
+            \PY{n}{f\PYZus{}right} \PY{o}{=} \PY{n}{flux}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{u\PYZus{}right}\PY{p}{)}
+            \PY{n}{f\PYZus{}left} \PY{o}{=} \PY{n}{flux}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{u\PYZus{}left}\PY{p}{)}
+            
+            \PY{n}{p} \PY{o}{+}\PY{o}{=} \PY{o}{\PYZhy{}}\PY{n}{dt}\PY{o}{/}\PY{n}{dx}\PY{o}{*}\PY{p}{(}\PY{n}{f\PYZus{}right} \PY{o}{\PYZhy{}} \PY{n}{f\PYZus{}left}\PY{p}{)}
+            \PY{k}{return} \PY{n}{p}
+        
+        \PY{n}{LW\PYZus{}cons}\PY{o}{.}\PY{n}{str} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Lax\PYZhy{}Wendroff conservative}\PY{l+s+s2}{\PYZdq{}}
+        \PY{n}{run}\PY{p}{(}\PY{n}{LW\PYZus{}cons}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}6}]:} <IPython.core.display.HTML object>
+\end{Verbatim}
+            
+    \subparagraph{Explanation:}\label{explanation}
+
+This scheme again compensates for the dissipation of the simple centered
+scheme. By defining
+
+\begin{align}
+    u_{x+\frac{1}{2}}^{t+\frac{1}{2}} = \frac{u_{x+1} + u_{x-1}^t}{2} - \frac{\Delta t}{2\Delta x}(f_{x+1}^t - f_x^t), 
+\end{align}
+
+the added flux term on the right corresponds to the second derivative as
+seen in the finite differences version.
+
+\subparagraph{Accuracy:}\label{accuracy}
+
+While we could not fully calculate the truncation error for the
+Lax-Wendroff conservative scheme, the conservative scheme is still
+second order accurate.
+
+    \subsection{\texorpdfstring{Gudonov Method
+\(\mathcal{O}(\Delta t, \Delta x)\)}{Gudonov Method \textbackslash{}mathcal\{O\}(\textbackslash{}Delta t, \textbackslash{}Delta x)}}\label{gudonov-method-mathcalodelta-t-delta-x}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{k}{def} \PY{n+nf}{Godunov}\PY{p}{(}\PY{n}{p}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} Godunov scheme \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{n}{vl} \PY{o}{=} \PY{n}{velocity}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{p}\PY{p}{)}
+            \PY{n}{vr} \PY{o}{=} \PY{n}{velocity}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{p}\PY{p}{)}
+            \PY{n}{ul} \PY{o}{=} \PY{n}{p}
+            \PY{n}{ur} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{roll}\PY{p}{(}\PY{n}{p}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}
+        
+            \PY{c+c1}{\PYZsh{}Shock or rarefaction?}
+            \PY{n}{Shock} \PY{o}{=} \PY{n}{vl} \PY{o}{\PYZhy{}} \PY{n}{vr} \PY{o}{\PYZgt{}} \PY{l+m+mi}{0} \PY{c+c1}{\PYZsh{} 1 is shock, 0 = rarefaction.}
+            \PY{n}{Rare} \PY{o}{=} \PY{n}{Shock} \PY{o}{!=} \PY{l+m+mi}{1}
+        
+            \PY{c+c1}{\PYZsh{}Direction of shock. }
+            \PY{n}{Sl} \PY{o}{=} \PY{p}{(}\PY{n}{vl} \PY{o}{+} \PY{n}{vr}\PY{p}{)}\PY{o}{/}\PY{l+m+mf}{2.} \PY{o}{\PYZlt{}} \PY{l+m+mi}{0}
+            \PY{n}{Sr} \PY{o}{=} \PY{n}{Sl} \PY{o}{!=} \PY{l+m+mi}{1}
+        
+            \PY{c+c1}{\PYZsh{}Sign of velocity.}
+            \PY{n}{v\PYZus{}right} \PY{o}{=} \PY{p}{(}\PY{n}{vl} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{0}\PY{p}{)} \PY{o}{==} \PY{p}{(}\PY{n}{vr} \PY{o}{\PYZgt{}} \PY{l+m+mi}{0}\PY{p}{)}
+            \PY{n}{v\PYZus{}left} \PY{o}{=} \PY{p}{(}\PY{n}{vr} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{l+m+mi}{0}\PY{p}{)} \PY{o}{==} \PY{p}{(}\PY{n}{vl} \PY{o}{\PYZgt{}} \PY{l+m+mi}{0}\PY{p}{)}
+            
+            \PY{c+c1}{\PYZsh{} Adding shock.}
+            \PY{n}{u}  \PY{o}{=} \PY{n}{Shock}\PY{o}{*}\PY{n}{Sl}\PY{o}{*}\PY{n}{ur}   
+            \PY{n}{u} \PY{o}{+}\PY{o}{=} \PY{n}{Shock}\PY{o}{*}\PY{n}{Sr}\PY{o}{*}\PY{n}{ul}
+        
+            \PY{c+c1}{\PYZsh{}Adding rarefaction.}
+            \PY{n}{u} \PY{o}{+}\PY{o}{=} \PY{n}{Rare}\PY{o}{*}\PY{n}{v\PYZus{}right}\PY{o}{*}\PY{n}{ul}
+            \PY{n}{u} \PY{o}{+}\PY{o}{=} \PY{n}{Rare}\PY{o}{*}\PY{n}{v\PYZus{}left}\PY{o}{*}\PY{n}{ur}
+        
+            \PY{n}{f\PYZus{}right} \PY{o}{=} \PY{n}{flux}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{u}\PY{p}{)}
+            \PY{n}{f\PYZus{}left}  \PY{o}{=} \PY{n}{flux}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{u}\PY{p}{)}
+        
+            \PY{n}{p} \PY{o}{+}\PY{o}{=} \PY{o}{\PYZhy{}}\PY{n}{dt}\PY{o}{/}\PY{n}{dx}\PY{o}{*}\PY{p}{(}\PY{n}{f\PYZus{}right} \PY{o}{\PYZhy{}} \PY{n}{f\PYZus{}left}\PY{p}{)}
+            \PY{k}{return} \PY{n}{p}
+        
+        \PY{n}{Godunov}\PY{o}{.}\PY{n}{str} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Godunov Method}\PY{l+s+s2}{\PYZdq{}}
+        \PY{n}{run}\PY{p}{(}\PY{n}{Godunov}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}7}]:} <IPython.core.display.HTML object>
+\end{Verbatim}
+            
+    \subparagraph{Explanation:}\label{explanation}
+
+The Godunov method follows the earlier conservative schemes by using
+
+\begin{align}
+    u_x^{t+1} = u_x^t -\frac{\Delta t}{\Delta x}\left(f_{x+\frac{1}{2}}^{t+\frac{1}{2}} - f_{x-\frac{1}{2}}^{t+\frac{1}{2}}\right)
+\end{align}
+
+to update its values in time and is therefore also conservative. Again,
+the trouble is finding the value of the flux at the border of the cell
+\(f_{x+\frac{1}{2}}^{t+\frac{1}{2}}\).
+
+The Godunov method views the boundaries between adjacent cells as
+Riemann problems. Our discrete grid gives us a piecewise constant
+function, with discontinuities at the boundaries, which can be stated as
+follows:
+
+\begin{equation}
+    u(x, 0)=
+    \begin{cases}
+      u_l, & \text{if}\ x<0 \\
+      u_r, & \text{if}\ x>0
+    \end{cases}
+ \end{equation}
+
+By solving the above Riemann problem, the halfway value \(u(0)\) can be
+found. The derivation of the Godunov scheme is a bit too broad for the
+scope of this work, but can be found in Godunov's 1959 paper\(^8\).
+Concretely, solving the Riemann problem comes down to the case of shock
+(\(u_l > u_r\)) and rarefaction (\(u_l \leq u_r\)). In case of shock:
+
+\begin{align}
+    \text{Shock speed } S \equiv \frac{u_l + u_r}{2}\\
+    u(0)=
+    \begin{cases}
+      u_l, & \text{if}\ S > 0 \\
+      u_r, & \text{if}\ S < 0
+    \end{cases}
+ \end{align}
+
+In case of rarefaction:
+
+\begin{align}
+    u(0)=
+    \begin{cases}
+      u_l, & \text{if}\ 0 \leq u_l \\
+      0,   & \text{if}\ u_l < 0 < u_r \\
+      u_r, & \text{if}\ u_r \leq 0
+    \end{cases}
+ \end{align}
+
+\subparagraph{Accuracy:}\label{accuracy}
+
+The above Godunov method obeys the Godunov theorem. The Godunov theorem
+states that monotone schemes can at most be first order accurate. The
+derivation of this result is beyond the scope of this work. A
+consequence of this theorem, as expressed by remark 13.5.2 in Toro
+2013\(^9\) , is that second order methods produce oscillations near
+discontinuities. To verify this, an initial condition of a block has
+been provided. These oscillations can be clearly seen in other schemes,
+yet are absent in the Godunov solution.
+
+ {[}8{]} Godunov, S. K. (1959). A difference method for numerical
+calculation of discontinuous solutions of the equations of
+hydrodynamics. Matematicheskii Sbornik, 89(3), 271-306.
+
+{[}9{]} Toro, E. F. (2013). Riemann solvers and numerical methods for
+fluid dynamics: a practical introduction. Springer Science \& Business
+Media.
+
+    \subsection{An exact numerical solution by the Lagrange
+method}\label{an-exact-numerical-solution-by-the-lagrange-method}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{k}{def} \PY{n+nf}{Lagrange}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{p0} \PY{o}{=} \PY{n}{pL}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} Lagrangian solution. Returns x, not p!\PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{n}{X} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{mod}\PY{p}{(}\PY{n}{X} \PY{o}{+} \PY{p}{(}\PY{l+m+mi}{1}\PY{o}{\PYZhy{}}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{p0}\PY{p}{)}\PY{o}{*}\PY{n}{dt}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+            \PY{k}{return} \PY{n}{X}
+        
+        \PY{n}{Lagrange}\PY{o}{.}\PY{n}{str} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Lagrange}\PY{l+s+s2}{\PYZdq{}}
+        \PY{n}{run}\PY{p}{(}\PY{n}{Lagrange}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}8}]:} <IPython.core.display.HTML object>
+\end{Verbatim}
+            
+    \subparagraph{Explanation:}\label{explanation}
+
+This method uses the total derivative of each point (points being
+sampled from the initial conditions) to calculate how much each point
+moves in space per unit time.
+
+In dt time, each point moves a distance = vdt where velocity for WLR
+equation = \(1-2\rho\). This perfectly works up until the shock point an
+dit exact but after the schock it becomes unphysical.
+
+    \section{Comparison and error
+analysis}\label{comparison-and-error-analysis}
+
+    \subsection{Comparison of all schemes}\label{comparison-of-all-schemes}
+
+The following code runs all schemes side by side. By comparing the
+behaviour of each scheme to the Lagrangian scheme, one can gain insight
+into whether a scheme is behaving properly.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{n}{schemes} \PY{o}{=} \PY{p}{[}\PY{n}{LF}\PY{p}{,} \PY{n}{LW}\PY{p}{,} \PY{n}{LF\PYZus{}cons}\PY{p}{,} \PY{n}{LW\PYZus{}cons}\PY{p}{,} \PY{n}{Godunov}\PY{p}{,} \PY{n}{Lagrange}\PY{p}{]}
+        
+        \PY{c+c1}{\PYZsh{}Stores the data for the corresponding scheme.}
+        \PY{n}{p\PYZus{}dict} \PY{o}{=} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}
+        \PY{n}{lines\PYZus{}dict} \PY{o}{=} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}
+        
+        \PY{k}{def} \PY{n+nf}{animate\PYZus{}all}\PY{p}{(}\PY{n}{i}\PY{p}{,} \PY{n}{schemes}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} Runs the schemes and sets line values. \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{k}{for} \PY{n}{scheme} \PY{o+ow}{in} \PY{n}{schemes}\PY{p}{:}
+                \PY{n}{p\PYZus{}dict}\PY{p}{[}\PY{n}{scheme}\PY{p}{]}\PY{o}{.}\PY{n}{update}\PY{p}{(}\PY{n}{scheme}\PY{p}{)}
+                \PY{k}{if} \PY{n}{scheme}\PY{o}{.}\PY{n}{str} \PY{o}{==} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Lagrange}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:}
+                    \PY{n}{lines\PYZus{}dict}\PY{p}{[}\PY{n}{scheme}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}data}\PY{p}{(}\PY{n}{p\PYZus{}dict}\PY{p}{[}\PY{n}{scheme}\PY{p}{]}\PY{o}{.}\PY{n}{v}\PY{p}{,} \PY{n}{pL}\PY{p}{)}
+                \PY{k}{else}\PY{p}{:}
+                    \PY{n}{lines\PYZus{}dict}\PY{p}{[}\PY{n}{scheme}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}data}\PY{p}{(}\PY{n}{x0}\PY{p}{,} \PY{n}{p\PYZus{}dict}\PY{p}{[}\PY{n}{scheme}\PY{p}{]}\PY{o}{.}\PY{n}{v}\PY{p}{)}
+                    
+            \PY{k}{return} \PY{n}{lines\PYZus{}dict}\PY{o}{.}\PY{n}{values}\PY{p}{(}\PY{p}{)}
+            
+        \PY{k}{def} \PY{n+nf}{run\PYZus{}all}\PY{p}{(}\PY{n}{schemes}\PY{o}{=}\PY{n}{schemes}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} Helper function to animate different schemes. \PYZdq{}\PYZdq{}\PYZdq{}}
+            
+            \PY{c+c1}{\PYZsh{}Set up plot.}
+            \PY{n}{fig}\PY{p}{,} \PY{n}{ax} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{)}\PY{p}{)}
+            \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Comparison of schemes}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlim}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+            \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylim}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{o}{.}\PY{l+m+mi}{5}\PY{p}{)}\PY{p}{)}
+            \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZdl{}}\PY{l+s+s1}{\PYZbs{}}\PY{l+s+s1}{rho\PYZdl{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{x}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            
+            \PY{c+c1}{\PYZsh{}Set up the dictionary data.}
+            \PY{k}{for} \PY{n}{scheme} \PY{o+ow}{in} \PY{n}{schemes}\PY{p}{:}
+                \PY{k}{if} \PY{n}{scheme}\PY{o}{.}\PY{n}{str} \PY{o}{==} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Lagrange}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:}
+                    \PY{n}{p\PYZus{}dict}\PY{p}{[}\PY{n}{scheme}\PY{p}{]} \PY{o}{=} \PY{n}{variable}\PY{p}{(}\PY{n}{xL0}\PY{p}{)}
+                    \PY{n}{lines\PYZus{}dict}\PY{p}{[}\PY{n}{scheme}\PY{p}{]} \PY{o}{=} \PYZbs{}
+                        \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{p}{[}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bo}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{markersize}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{01}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{n}{scheme}\PY{o}{.}\PY{n}{str}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+                \PY{k}{else}\PY{p}{:}
+                    \PY{n}{p\PYZus{}dict}\PY{p}{[}\PY{n}{scheme}\PY{p}{]} \PY{o}{=} \PY{n}{variable}\PY{p}{(}\PY{n}{p0}\PY{p}{)}
+                    \PY{n}{lines\PYZus{}dict}\PY{p}{[}\PY{n}{scheme}\PY{p}{]} \PY{o}{=} \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{p}{[}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{p}{]}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{n}{scheme}\PY{o}{.}\PY{n}{str}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+            
+            \PY{c+c1}{\PYZsh{}Plot initial values for reference.}
+            \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x0}\PY{p}{,} \PY{n}{p0}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZhy{}\PYZhy{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{n}{anim} \PY{o}{=} \PY{n}{animation}\PY{o}{.}\PY{n}{FuncAnimation}\PY{p}{(}\PY{n}{fig}\PY{p}{,} \PY{n}{animate\PYZus{}all}\PY{p}{,} \PY{n}{fargs}\PY{o}{=}\PY{p}{(}\PY{n}{schemes}\PY{p}{,}\PY{p}{)}\PY{p}{,}
+                                       \PY{n}{frames}\PY{o}{=}\PY{n+nb}{int}\PY{p}{(}\PY{n}{T}\PY{o}{/}\PY{n}{dt}\PY{p}{)}\PY{p}{,} \PY{n}{interval}\PY{o}{=}\PY{l+m+mi}{50}\PY{p}{,} \PY{n}{blit}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+            \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{)}
+            \PY{n}{rc}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{animation}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{html}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{html5}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            \PY{c+c1}{\PYZsh{}Close figure and reset before returning.}
+            \PY{n}{plt}\PY{o}{.}\PY{n}{close}\PY{p}{(}\PY{n}{anim}\PY{o}{.}\PY{n}{\PYZus{}fig}\PY{p}{)}
+            \PY{n}{reset}\PY{p}{(}\PY{p}{)}
+            \PY{k}{return} \PY{n}{HTML}\PY{p}{(}\PY{n}{anim}\PY{o}{.}\PY{n}{to\PYZus{}html5\PYZus{}video}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+            
+        \PY{n}{run\PYZus{}all}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}9}]:} <IPython.core.display.HTML object>
+\end{Verbatim}
+            
+    \subparagraph{Comment:}\label{comment}
+
+It must be noted that the comparison is only valid until collapse time
+\(t_c\), after which the Lagrangian scheme is no longer a proper
+function.
+
+As can be seen from the above animation, the Lax-Wendroff scheme quickly
+falls behind the other schemes. This is explained by its increase in
+mass, seen previously. Since the speed of the wave is dependent on
+\((1-2u)\), as soon as total mass \(m = \sum_{n=0}^N u\) increases,
+overall speed decreases. The phenomenon is not observed in its
+conservative cousin.
+
+    \subsection{Error analysis}\label{error-analysis}
+
+The following code interpolates the Lagrangian scheme to allow it to be
+compared to the other schemes. Two norms are defined, the \(L_2\) norm
+and the \(L_\infty\) norm. They are defined as follows:
+
+\begin{align}
+    ||x||_2 &= \sqrt{\left(\sum_{i=0}^N h_i |x_i|^2\right)} \\
+    ||x||_\infty &= h\cdot \text{sup}_i|x_i|.
+\end{align}
+
+Here sup will be carried out by the np.max function. Since we are
+working with a discrete system, the norms need to be modified. By
+dividing by the number of grid points N, the norm will be properly
+defined.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{schemes} \PY{o}{=} \PY{p}{[}\PY{n}{LF}\PY{p}{,} \PY{n}{LW}\PY{p}{,} \PY{n}{LF\PYZus{}cons}\PY{p}{,} \PY{n}{LW\PYZus{}cons}\PY{p}{,} \PY{n}{Godunov}\PY{p}{]}
+         
+         
+         \PY{k}{def} \PY{n+nf}{L2}\PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{n}{b}\PY{p}{)}\PY{p}{:}
+             \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}returns the L2 norm of the system\PYZdq{}\PYZdq{}\PYZdq{}}
+             \PY{k}{return} \PY{n}{np}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{p}{(}\PY{n}{b} \PY{o}{\PYZhy{}} \PY{n}{a}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}\PY{o}{*}\PY{n}{dx}\PY{o}{*}\PY{n}{dt}
+         
+         \PY{k}{def} \PY{n+nf}{L\PYZus{}inf}\PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{n}{b}\PY{p}{)}\PY{p}{:}
+             \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}returns the L infinity norm of the system\PYZdq{}\PYZdq{}\PYZdq{}}
+             \PY{k}{return} \PY{n}{np}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{abs}\PY{p}{(}\PY{n}{b} \PY{o}{\PYZhy{}} \PY{n}{a}\PY{p}{)}\PY{p}{)}\PY{o}{*}\PY{n}{dx}\PY{o}{*}\PY{n}{dt}
+         
+         \PY{n}{L2}\PY{o}{.}\PY{n}{str} \PY{o}{=} \PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZdl{}L\PYZus{}2\PYZdl{}}\PY{l+s+s1}{\PYZsq{}}
+         \PY{n}{L\PYZus{}inf}\PY{o}{.}\PY{n}{str} \PY{o}{=} \PY{l+s+sa}{r}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZdl{}L\PYZus{}}\PY{l+s+s1}{\PYZbs{}}\PY{l+s+s1}{infty\PYZdl{}}\PY{l+s+s1}{\PYZsq{}}
+         
+         \PY{k}{def} \PY{n+nf}{check\PYZus{}collapse}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{:}
+             \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} Checks the \PYZsq{}collapse\PYZsq{} of the Lagrangian solution. \PYZdq{}\PYZdq{}\PYZdq{}}
+             \PY{c+c1}{\PYZsh{} Collapse has happened as soon as two right neigbours have}
+             \PY{c+c1}{\PYZsh{} lower x values than their left neighbours.}
+             \PY{n}{count} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{n}{x} \PY{o}{\PYZhy{}} \PY{n}{np}\PY{o}{.}\PY{n}{roll}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)} \PY{o}{\PYZlt{}} \PY{l+m+mi}{0}\PY{p}{)}
+             \PY{k}{if} \PY{n}{count} \PY{o}{\PYZgt{}}\PY{l+m+mi}{1}\PY{p}{:}
+                 \PY{k}{return} \PY{k+kc}{True}
+             \PY{k}{return} \PY{k+kc}{False}
+             
+         \PY{k}{def} \PY{n+nf}{compare}\PY{p}{(}\PY{n}{norm}\PY{o}{=}\PY{n}{L2}\PY{p}{,} \PY{n}{plot}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}\PY{p}{:}
+             \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} Compares schemes to Lagrange using the given norm \PYZdq{}\PYZdq{}\PYZdq{}}
+             \PY{k}{if} \PY{n}{plot}\PY{p}{:}
+                 \PY{c+c1}{\PYZsh{}Set up figure}
+                 \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{)}\PY{p}{)}
+                 \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{time}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                 \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Error}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                 \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Error comparison }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{(}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n}{norm}\PY{o}{.}\PY{n}{str} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+             
+             \PY{c+c1}{\PYZsh{}Set up dictionaries and time variables.}
+             \PY{n}{p\PYZus{}dict} \PY{o}{=} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}
+             \PY{n}{p\PYZus{}dict}\PY{p}{[}\PY{n}{Lagrange}\PY{p}{]} \PY{o}{=} \PY{n}{variable}\PY{p}{(}\PY{n}{xL0}\PY{p}{)}    
+             \PY{n}{diff\PYZus{}dict} \PY{o}{=} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}
+             \PY{n}{time} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{T}\PY{p}{,} \PY{n}{dt}\PY{p}{)}
+             \PY{n}{t\PYZus{}collapse} \PY{o}{=} \PY{l+m+mi}{0}
+             
+             \PY{k}{for} \PY{n}{scheme} \PY{o+ow}{in} \PY{n}{schemes}\PY{p}{:}
+                 \PY{n}{p\PYZus{}dict}\PY{p}{[}\PY{n}{scheme}\PY{p}{]} \PY{o}{=} \PY{n}{variable}\PY{p}{(}\PY{n}{p0}\PY{p}{)}
+                 \PY{n}{diff\PYZus{}dict}\PY{p}{[}\PY{n}{scheme}\PY{p}{]} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+             
+             \PY{c+c1}{\PYZsh{} Run the simulation}
+             \PY{k}{for} \PY{n}{t} \PY{o+ow}{in} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{T}\PY{p}{,} \PY{n}{dt}\PY{p}{)}\PY{p}{:}
+                 \PY{c+c1}{\PYZsh{}Check for collapse.}
+                 \PY{k}{if} \PY{n}{check\PYZus{}collapse}\PY{p}{(}\PY{n}{p\PYZus{}dict}\PY{p}{[}\PY{n}{Lagrange}\PY{p}{]}\PY{o}{.}\PY{n}{v}\PY{p}{)} \PY{o+ow}{and} \PY{n}{t\PYZus{}collapse} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{:}
+                     \PY{n}{t\PYZus{}collapse} \PY{o}{=} \PY{n}{t}
+                     \PY{k}{if} \PY{o+ow}{not} \PY{n}{plot}\PY{p}{:}
+                         \PY{k}{break}
+                 \PY{c+c1}{\PYZsh{}Update the Lagrange solution}
+                 \PY{n}{p\PYZus{}dict}\PY{p}{[}\PY{n}{Lagrange}\PY{p}{]}\PY{o}{.}\PY{n}{update}\PY{p}{(}\PY{n}{Lagrange}\PY{p}{)}
+                 
+                 \PY{c+c1}{\PYZsh{}Interpolate the Lagrange solution to compare it to the }
+                 \PY{c+c1}{\PYZsh{}others. Also update the p\PYZhy{}vectors for the schemes. }
+                 \PY{k}{for} \PY{n}{scheme} \PY{o+ow}{in} \PY{n}{schemes}\PY{p}{:}
+                     \PY{n}{p\PYZus{}dict}\PY{p}{[}\PY{n}{scheme}\PY{p}{]}\PY{o}{.}\PY{n}{update}\PY{p}{(}\PY{n}{scheme}\PY{p}{)}
+                     \PY{n}{interp} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{interp}\PY{p}{(}\PY{n}{x0}\PY{p}{,} \PY{n}{p\PYZus{}dict}\PY{p}{[}\PY{n}{Lagrange}\PY{p}{]}\PY{o}{.}\PY{n}{v}\PY{p}{,} \PY{n}{pL}\PY{p}{,} \PY{n}{period}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+                     \PY{n}{diff\PYZus{}dict}\PY{p}{[}\PY{n}{scheme}\PY{p}{]}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{norm}\PY{p}{(}\PY{n}{interp}\PY{p}{,} \PY{n}{p\PYZus{}dict}\PY{p}{[}\PY{n}{scheme}\PY{p}{]}\PY{o}{.}\PY{n}{v}\PY{p}{)}\PY{p}{)}
+                     
+                 
+             
+             \PY{c+c1}{\PYZsh{}Maximum error value for collapse plotting.}
+             \PY{k}{if} \PY{n}{plot}\PY{p}{:}
+                 \PY{n}{max\PYZus{}val} \PY{o}{=} \PY{l+m+mi}{0}
+                 \PY{n}{min\PYZus{}val} \PY{o}{=} \PY{l+m+mi}{10}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{30}
+                 \PY{k}{for} \PY{n}{scheme} \PY{o+ow}{in} \PY{n}{schemes}\PY{p}{:}
+                     \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{time}\PY{p}{,} \PY{n}{diff\PYZus{}dict}\PY{p}{[}\PY{n}{scheme}\PY{p}{]}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{n}{scheme}\PY{o}{.}\PY{n}{str}\PY{p}{)}
+                     \PY{k}{if} \PY{n}{np}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{n}{diff\PYZus{}dict}\PY{p}{[}\PY{n}{scheme}\PY{p}{]}\PY{p}{)} \PY{o}{\PYZgt{}} \PY{n}{max\PYZus{}val}\PY{p}{:}
+                         \PY{n}{max\PYZus{}val} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{n}{diff\PYZus{}dict}\PY{p}{[}\PY{n}{scheme}\PY{p}{]}\PY{p}{)}
+                     \PY{k}{if} \PY{n}{np}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{n}{diff\PYZus{}dict}\PY{p}{[}\PY{n}{scheme}\PY{p}{]}\PY{p}{)} \PY{o}{\PYZlt{}} \PY{n}{min\PYZus{}val}\PY{p}{:}
+                         \PY{n}{min\PYZus{}val} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{n}{diff\PYZus{}dict}\PY{p}{[}\PY{n}{scheme}\PY{p}{]}\PY{p}{)}
+                 \PY{c+c1}{\PYZsh{}Plot collapse line}
+                 \PY{k}{if} \PY{n}{t\PYZus{}collapse} \PY{o}{!=} \PY{l+m+mi}{0}\PY{p}{:}
+                     \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{p}{[}\PY{n}{t\PYZus{}collapse}\PY{p}{,} \PY{n}{t\PYZus{}collapse}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{n}{min\PYZus{}val}\PY{p}{,}\PY{n}{max\PYZus{}val}\PY{p}{]}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZhy{}\PYZhy{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+                 \PY{n}{plt}\PY{o}{.}\PY{n}{ylim}\PY{p}{(}\PY{n}{min\PYZus{}val}\PY{p}{,} \PY{n}{max\PYZus{}val}\PY{p}{)}
+                 \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{)}
+                 \PY{n}{plt}\PY{o}{.}\PY{n}{ylim}\PY{p}{(}\PY{p}{)}
+                 \PY{n}{plt}\PY{o}{.}\PY{n}{yscale}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{log}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+                 \PY{n}{plt}\PY{o}{.}\PY{n}{xscale}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{log}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+                 \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+             \PY{k}{if} \PY{o+ow}{not} \PY{n}{plot}\PY{p}{:}
+                 \PY{k}{return} \PY{n}{diff\PYZus{}dict}
+             
+         
+         
+         \PY{n}{compare}\PY{p}{(}\PY{p}{)}
+         \PY{n}{compare}\PY{p}{(}\PY{n}{L\PYZus{}inf}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_30_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_30_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \paragraph{Comment:}\label{comment}
+
+The above figure shows the total cumulative error of every scheme when
+compared to the Lagrangian solution. The collapse time \(t_c\) has been
+marked. Since the error is cumulative, errors for all schemes increase
+with time.
+
+Of all our schemes, the conservative Lax-Wendroff scheme seems to be the
+best solution to the WLR equation. It must be noted however, that this
+scheme strongly distorts the curve around the schock wave, compared to
+e.g. the Godunov scheme. This distortion can be seen in the different
+results for the \(L_2\) and the \(L_\infty\) norms. The latter measures
+the largest deviation at a single point, at which the Lax-Wendroff
+scheme performs poorly.
+
+The two Lax-Friedrich schemes are almost identical at our original
+parameters for \(\Delta x\) and \(\Delta t\) and are the worst overall,
+in accordance with their first order accuracy. The Godunov scheme, while
+being of the same order of accuracy, still performs better due to its
+more accurate approximation of the Riemann problem.
+
+
+\section{Conclusion}
+In this project we found out the numerical solutions to the LWR equation modelling traffic flow. The most essential feature i.e a shock which corressponds to a traffic jam was observed in all the solutions.
+
+We compared different schemes and saw how finite volume conservative schemes are better than finite element non-conservative ones due to their conservative nature. We also saw that the schemes perform poorly after the formation of the shock and Gudonov method is the most stable near the time forming up to the shock. We discussed the accuracy order of our schemes and their truncation criteria.
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}

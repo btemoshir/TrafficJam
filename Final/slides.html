@@ -1,64 +1,8 @@
-
 <!DOCTYPE html>
 <html>
-<head>
-
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="chrome=1" />
-
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
-<title>slides slides</title>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<head><meta charset="utf-8" />
+<title>slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-<!-- General and theme style sheets -->
-<link rel="stylesheet" href="reveal.js/css/reveal.css">
-<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
-
-<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-<script>
-if( window.location.search.match( /print-pdf/gi ) ) {
-        var link = document.createElement( 'link' );
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = 'reveal.js/css/print/pdf.css';
-        document.getElementsByTagName( 'head' )[0].appendChild( link );
-}
-
-</script>
-
-<!--[if lt IE 9]>
-<script src="reveal.js/lib/js/html5shiv.js"></script>
-<![endif]-->
-
-<!-- Loading the mathjax macro -->
-<!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
-    <!-- MathJax configuration -->
-    <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-            processEscapes: true,
-            processEnvironments: true
-        },
-        // Center justify equations in code and markdown cells. Elsewhere
-        // we use CSS to left justify single line equations in code cells.
-        displayAlign: 'center',
-        "HTML-CSS": {
-            styles: {'.MathJax_Display': {"margin": 0}},
-            linebreaks: { automatic: true }
-        }
-    });
-    </script>
-    <!-- End of mathjax configuration -->
-
-<!-- Get Font-awesome from cdn -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
 
 <style type="text/css">
     /*!
@@ -11774,133 +11718,59 @@ ul.typeahead-list > li > a {
 
 <style type="text/css">
 /* Overrides of notebook CSS for static HTML export */
-.reveal {
-  font-size: 160%;
+body {
+  overflow: visible;
+  padding: 8px;
 }
-.reveal pre {
-  width: inherit;
-  padding: 0.4em;
-  margin: 0px;
-  font-family: monospace, sans-serif;
-  font-size: 80%;
-  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
-}
-.reveal pre code {
-  padding: 0px;
-}
-.reveal section img {
-  border: 0px solid black;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0);
-}
-.reveal i {
-  font-style: normal;
-  font-family: FontAwesome;
-  font-size: 2em;
-}
-.reveal .slides {
-  text-align: left;
-}
-.reveal.fade {
-  opacity: 1;
-}
-.reveal .progress {
-  position: static;
-}
-.reveal .controls .navigate-left,
-.reveal .controls .navigate-left.enabled {
-  border-right-color: #727272;
-}
-.reveal .controls .navigate-left.enabled:hover,
-.reveal .controls .navigate-left.enabled.enabled:hover {
-  border-right-color: #dfdfdf;
-}
-.reveal .controls .navigate-right,
-.reveal .controls .navigate-right.enabled {
-  border-left-color: #727272;
-}
-.reveal .controls .navigate-right.enabled:hover,
-.reveal .controls .navigate-right.enabled.enabled:hover {
-  border-left-color: #dfdfdf;
-}
-.reveal .controls .navigate-up,
-.reveal .controls .navigate-up.enabled {
-  border-bottom-color: #727272;
-}
-.reveal .controls .navigate-up.enabled:hover,
-.reveal .controls .navigate-up.enabled.enabled:hover {
-  border-bottom-color: #dfdfdf;
-}
-.reveal .controls .navigate-down,
-.reveal .controls .navigate-down.enabled {
-  border-top-color: #727272;
-}
-.reveal .controls .navigate-down.enabled:hover,
-.reveal .controls .navigate-down.enabled.enabled:hover {
-  border-top-color: #dfdfdf;
-}
-.reveal .progress span {
-  background: #727272;
-}
-div.input_area {
-  padding: 0.06em;
-}
-div.code_cell {
-  background-color: transparent;
-}
-div.prompt {
-  width: 11ex;
-  padding: 0.4em;
-  margin: 0px;
-  font-family: monospace, sans-serif;
-  font-size: 80%;
-  text-align: right;
-}
-div.output_area pre {
-  font-family: monospace, sans-serif;
-  font-size: 80%;
-}
-div.output_prompt {
-  /* 5px right shift to account for margin in parent container */
-  margin: 5px 5px 0 0;
-}
-div.text_cell.rendered .rendered_html {
-  /* The H1 height seems miscalculated, we are just hidding the scrollbar */
-  overflow-y: hidden;
-}
-a.anchor-link {
-  /* There is still an anchor, we are only hidding it */
-  display: none;
-}
-.rendered_html p {
-  text-align: inherit;
-}
-::-webkit-scrollbar
-{
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar *
-{
-  background:transparent;
-}
-::-webkit-scrollbar-thumb
-{
-  background: #727272 !important;
+
+div#notebook {
+  overflow: visible;
+  border-top: none;
+}@media print {
+  div.cell {
+    display: block;
+    page-break-inside: avoid;
+  } 
+  div.output_wrapper { 
+    display: block;
+    page-break-inside: avoid; 
+  }
+  div.output { 
+    display: block;
+    page-break-inside: avoid; 
+  }
 }
 </style>
 
 <!-- Custom stylesheet, it must be in the same directory as the html file -->
 <link rel="stylesheet" href="custom.css">
 
-</head>
-
-
+<!-- Loading mathjax macro -->
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        // Center justify equations in code and markdown cells. Elsewhere
+        // we use CSS to left justify single line equations in code cells.
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Display': {"margin": 0}},
+            linebreaks: { automatic: true }
+        }
+    });
+    </script>
+    <!-- End of mathjax configuration --></head>
 <body>
+  <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
 
-
-<div class="reveal">
-<div class="slides">
-<section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -11910,7 +11780,7 @@ a.anchor-link {
 <center> <img src="ENS_Logo.png" width="150"> </center>
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -11920,7 +11790,7 @@ Old U.S. 395 Highway Sand Diego from <a href="http://www.garbell.com/US395-old/3
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -11930,7 +11800,7 @@ From autoevolution</p>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -11940,7 +11810,7 @@ From Blogex</p>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -11949,7 +11819,7 @@ From Blogex</p>
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -11959,7 +11829,7 @@ From Berklee Science Review</p>
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -11978,7 +11848,7 @@ From Berklee Science Review</p>
 </ul>
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -11987,7 +11857,7 @@ From Berklee Science Review</p>
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12000,7 +11870,7 @@ From Berklee Science Review</p>
 </ul>
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12023,7 +11893,7 @@ From Berklee Science Review</p>
 </ul>
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12044,7 +11914,7 @@ From Berklee Science Review</p>
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12063,7 +11933,7 @@ From Berklee Science Review</p>
 </ul>
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12073,7 +11943,7 @@ Image from <a href="http://laurent.nack.pagesperso-orange.fr/burgers/burger.htm"
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12097,7 +11967,7 @@ Image from <a href="http://laurent.nack.pagesperso-orange.fr/burgers/burger.htm"
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12113,7 +11983,7 @@ Image from <a href="http://laurent.nack.pagesperso-orange.fr/burgers/burger.htm"
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12143,7 +12013,462 @@ Image from <a href="http://laurent.nack.pagesperso-orange.fr/burgers/burger.htm"
 </ol>
 </div>
 </div>
-</div></section></section><section><section>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="--Introduction-"><font color="Tomato"> <u> Introduction </u></font><a class="anchor-link" href="#--Introduction-">&#182;</a></h3><p>Physical systems have been modeled using <b>partial differential equations (PDEs)</b> by physicists over centuries to enhance their understanding and to make predictions. Most physical quantities such as density, temperature or velocity are continuous functions of the variables at a mesoscopic or a larger length scale and PDEs accurately describe the solutions to these physical quantities.</p>
+<p>Other quantities which occur discretely in nature like number of animals can also be approximated by continuous functions like population. They can be modelled by PDEs$^1$ in the limit of large numbers. <b>Difference Equations</b>, which are analogues of PDEs in the discrete domain, are strictly speaking a better description of these systems but modelling them by PDEs instead offer several advantages and ease of calculation. For a wide class of PDEs analytical solutions or general analytical results can be derived, which is not the case for difference equations. Difference equations also very frequently run into the domain of chaos$^2$, even in 1D, and the solutions no longer are well behaved. For PDEs, chaos is not observed in at least 2 dimensions and solutions are better behaved. For most cases in the limit of large numbers, the solutions offered by PDEs are close to those obtained from difference equations. This strategy has been fairly successful, especially in the fields of population ecology and modelling traffic$^{1,4}$.</p>
+<p>After the 1950s, due to a rapid increase in the number of personal vehicles, the freeways and roads experienced major traffic jams and delays in transportation cost billions$^4$. From then on it became important to understand the nature of traffic jams, how they arise and disperse, and what could be done to avoid them. <b>Mathematical modeling of traffic jams</b> was the approach the physicists took to understand this problem and has since resulted in numerous publications and insights in understanding traffic flow$^5$.</p>
+<p>The equations describing traffic flow are <b>non-linear</b> and the solutions of which can show surprising features such as discontinuities called <b>shocks</b>. The analytical solutions to these equations are rare and generally numerical methods have to be carefully used to obtain any solutions. The solutions to these equations are not only interesting from their application point of view but also to the numerical physics community, for these equations present an opportunity to learn more about non-linearity and how the numerical schemes can be improved.</p>
+<h3 id="--Mathematical-Models-and-Lighthill&#8211;Whitham&#8211;Richards-(LWR)-Equation-"><font color="Tomato"> <u> Mathematical Models and Lighthill&#8211;Whitham&#8211;Richards (LWR) Equation </u></font><a class="anchor-link" href="#--Mathematical-Models-and-Lighthill&#8211;Whitham&#8211;Richards-(LWR)-Equation-">&#182;</a></h3><p>Traffic models can be studies in analogy with with <b>fluid flow models</b>. Cars can be coarse grained and modelled as a fluid described by a <b>density field $\rho(\vec{x})$</b> and with a <b>velocity field $u(\vec{x})$</b> which corresponds to the literal density of cars at $\vec{x}$ and the velocity of cars at $\vec{x}$. Our objective is to determine $\rho(t,\vec{x})$ and $u(t,\vec{x})$ given appropriate boundary conditions. These quantities can be obtained as the solution to a PDE which relates the time and space evolution of density and velocity under the appropriate physical law governing the traffic flow.</p>
+<p>To understand traffic flow, we make an assumption on the velocity u as a function of the density $\rho$. Physically at low densities, the cars will go at high velocities with $v_0$ being the maximum velocity, but if the density of cars get high, the velocity of cars will decrease linearly due to congestion, becoming 0 at $\rho = \rho_0$. Here we study 1-dimensional traffic flow. This was the key assumption of the <b>Lighthill–Whitham–Richards (LWR) model</b>. The velocity in the LWR model is defined as:</p>
+<p>\begin{equation}
+    u = v_0\left(1-\frac{\rho}{\rho_0}\right)
+\end{equation}</p>
+<p>For our treatment we consider a <b>circular road with no input nor output flux of cars</b>. Then, trivially the <b>number of cars should be conserved in time</b>. Thus, the <b>continuity equation for an incompressible fluid</b>, which says that the change in the number of cars in a small volume in a small time must be equal to the difference of the flux of cars coming in and going out in the small volume in that time, must describe the time evolution of density:</p>
+<p>\begin{equation}
+    \frac{\partial \rho}{\partial t} + \frac{\partial (\rho u)}{\partial x} = 0
+\end{equation}</p>
+<p>Combining these two we get:</p>
+<p>\begin{equation}
+ \frac{\partial \rho}{\partial t} + \frac{\partial}{\partial x}\left[ v_0 \left(1-\frac{\rho}{\rho_0}\right)\rho \right] = 0 
+\end{equation}</p>
+<p>where <b>$v_0$ and $\rho_0$ are the parameters which are set to one</b> without loss of generality. So the equation becomes:</p>
+<p>\begin{equation}
+    \frac{\partial \rho}{\partial t} + \frac{\partial}{\partial x}\left[ \left(1-\rho\right)\rho \right] = 0
+\end{equation}</p>
+<p>This equation can also be written as:</p>
+<p>\begin{equation}
+    \frac{\partial \rho}{\partial t} + \left(1-2\rho\right)\frac{\partial \rho}{\partial x} = 0
+\end{equation}</p>
+<p>This is the simplest <b>Lighthill–Whitham–Richards LWR model</b>. This equation is also known as the <b>inviscid Burgers' equation</b> which form huge discontinuities commonly referred to as <b>shock</b>.</p>
+<p>The LWR equation was developed in 1955 and 1956 by Lighthill and Whitham, and independently also by Richards$^6$. In addition to the continuity equation, their key assumption was that the traffic flow $Q(x,t) = \rho(x,t)u(x,t)$, or speed $u(x,t) = u(\rho(x,t))$ is always in local equilibrium with respect to the density: <b>Traffic flow and local speed instantaneously follow the density, not only for steady-state traffic but in all situations$^4$</b>.</p>
+<p>The exact form of $u(\rho(x,t))$ was not defined originally and is obtained by experimental fitting the data or by simple assumptions like the linear decrease of velocity with density, which we have used for our analysis.</p>
+<h4 id="--Advection-Equation-"><font color="Tomato"> <u> Advection Equation </u></font><a class="anchor-link" href="#--Advection-Equation-">&#182;</a></h4><p>The Burgers' equation belong to a much bigger class of <b>Advection Equations</b> which are <b>hyperbolic partial differential equations</b> and are notorious for numerical schemes to handle due to shocks.</p>
+<p>An advection equation arrises when a scalar field (here being density) is advected (transported by bulk motion) by a vector field (here being the velocity). Related quantities like Energy are also advected with the scalar field. The LWR equation is more complex than a simple advection equation because unlike the Advection equation where the velocity is constant, the velocity here depends on the density.</p>
+<h3 id="--Burgers'-Equation-and-Shocks-"><font color="Tomato"> <u> Burgers' Equation and Shocks </u></font><a class="anchor-link" href="#--Burgers'-Equation-and-Shocks-">&#182;</a></h3><p>In Burgers' equation the propagation velocity decreases with density, this results in highly dense and slowly moving regions, and rare and highly mobile regions which propagate as a shock wave. Suppose we start from a sin modulation of density, the low density areas where sin is minimum will move faster towards the high density areas, and the high density areas where sin is maximum will move slowly. As a result the wave will get distorted because mass from low density areas moves faster and accumulates while the high density areas cannot disperse their mass.</p>
+<p>This results in steep gradient or a discontinuity in $\rho$, which propagates at a velocity, called a shock wave as shown in the figure. The numerical treatment of shocks is difficult due to the increasing discontinuity and methods fail as the gradient grows. Traditional schemes like Finite Elements and Finite Volumes don't work well and have to replaced by the Gudonov method to obtain correct solutions up until shock formation. Once the shock has formed, many numerical schemes no longer perform well.</p>
+<p><img src="http://laurent.nack.pagesperso-orange.fr/burgers/graph1.gif" alt="Image of Shock">
+Image from <a href="http://laurent.nack.pagesperso-orange.fr/burgers/burger.htm">http://laurent.nack.pagesperso-orange.fr/burgers/burger.htm</a></p>
+<p>The shock propagates with a constant velocity which can be obtained by simple analysis$^4$:</p>
+<p>\begin{equation}
+    c_{12} = \frac{dX_{12}}{dt} = v_0 \left[ 1-\left( \frac{\rho_1+\rho_2}{\rho_0} \right)\right]     
+\end{equation}</p>
+<p>where $\rho_1$ and $\rho_2$ are the densities at the two sides of the shock wave and $v_0$ and $\rho_0$ were defined earlier.</p>
+<p><img src="shock_front.png" width="480">
+Shockfront velocity. Image from$^3$.</p>
+<h3 id="--Numerically-Solving-the-LWR-Equation-"><font color="Tomato"> <u> Numerically Solving the LWR Equation </u></font><a class="anchor-link" href="#--Numerically-Solving-the-LWR-Equation-">&#182;</a></h3><p>The LWR Equation in the last form is solved on a <b>1D space on an x-grid</b> that goes from 0 to 1 with <b>periodic boundary conditions</b> which amounts to solving traffic flow on a <b>circular road</b> with neither exits nor entrances:</p>
+<p>\begin{equation}
+    \rho(x+1) = \rho(x)
+\end{equation}</p>
+<p>Subjected to the initial conditions:</p>
+<p>\begin{equation}
+    \rho(t=0,x) = 0.2 + 0.1sin(2\pi x)
+\end{equation}</p>
+<p>Which assumes a constant density of cars at $\rho=0.2$ over which we have a sin modulation of density of amplitude 0.1. The density $\rho&gt;0$ $\forall$ x and stays that way $\forall$ t. NOTE: Negative density of cars is unphysical.</p>
+<p>The total <b>integration time, T = 1</b> with the <b>number of grid points = N</b>, the time increment <b>$\Delta t=\frac{1}{N}=\frac{1}{100} $</b> and spatial increment, <b>$\Delta x=\frac{1}{N}=\frac{1}{100}$</b>.</p>
+<p>Since we consider a 1D circular road with no output or input flux of cars, the <b>total number of cars on the road = M, should stay constant in time</b>:</p>
+<p>\begin{equation}
+    M(t) = \int_{0}^{1} \rho(t,x)dx = \sum_{i=0}^{1} \rho{t,x_i} 
+\end{equation}</p>
+<p>Evaluating M(t) is one way to check the accuracy of our numerical schemes. Schemes such as finite element are dispersive or dissipative and usually do not conserve M, and that's why we have to use either finite volume schemes which are conservative in nature.</p>
+<h3 id="--CFL-Condition-"><font color="Tomato"> <u> CFL Condition </u></font><a class="anchor-link" href="#--CFL-Condition-">&#182;</a></h3><p>The Courant-Friedrichs-Lewy condition is a condition for the convergence of numerical methods for partial differential equations. It states: $\textit{the numerical domain of dependence must include the physical domain of dependence}^7$. The analytical domain of dependence for the WLR equation is $c\Delta t$: the distance a wave can travel during time step $\Delta t$. The numerical domain of dependence is $\Delta x$, since in all schemes used here, interaction happens with nearest neighbours. This results in the CFL condition of</p>
+<p>\begin{equation}
+    (1-2\rho) \frac{\Delta t}{\Delta x} \leq 1.
+\end{equation}</p>
+<p>If the condition is violated, information is lost in the simulation that is contained in the original WLR equation. This loss of information impedes convergence and often destabilizes the scheme.</p>
+<h3 id="--Overview-"><font color="Tomato"> <u> Overview </u></font><a class="anchor-link" href="#--Overview-">&#182;</a></h3><p>We simulate the solution to this equation using different schemes and compare our results:</p>
+<ol>
+    <li> <b>Finite Element Schemes </b>
+        <ol>
+            <li> Lax-Wendroff
+            <li> Lax-Friedrichs
+        </ol>
+    <li> <b>Finite Volume Schemes </b>
+        <ol>
+            <li> Lax-Wendroff
+            <li> Lax-Friedrichs
+        </ol>
+    <li> <b>Gudonov Method</b>
+    <li> <b>Lagrange Method</b>
+</ol><p>We also discuss the <b>dispersive and/or the dissipative nature</b> of these schemes, their <b>stability</b> also demonstrate the <b>modified wavenumber</b> analysis for one of the cases. We also calculate the <b>truncation error</b> for most of the schemes and calculate the <b>order of accuracy</b>. We finish by presenting some results on the <b>dependence of the error on the grid size</b> in time and space.</p>
+<h3 id="--References-"><font color="Tomato"> <u> References </u></font><a class="anchor-link" href="#--References-">&#182;</a></h3><p><i>
+[1] Holmes, E. E., Lewis, M. A., Banks, J. E. and Veit, R. R. (1994), Partial Differential Equations in Ecology: Spatial Interactions and Population Dynamics. Ecology, 75: 17–29. doi:10.2307/1939378</p>
+<p>[2] May, R. M. (1976). Simple mathematical models with very complicated dynamics. Nature, 261, 459. Retrieved from <a href="http://dx.doi.org/10.1038/261459a0">http://dx.doi.org/10.1038/261459a0</a></p>
+<p>[3] Godunov, S. K. (n.d.). Finite Difference Method for Numerical Computation of Discontinuous Solutions of the Equations of Fluid Dynamics.</p>
+<p>[4] Treiber, M., and Kesting, A. (2013). Traffic Flow Dynamics. Traffic Flow Dynamics. <a href="http://doi.org/10.1007/978-3-642-32460-4">http://doi.org/10.1007/978-3-642-32460-4</a></p>
+<p>[5] Helbing, D. (2001). Traffic and related self-driven many-particle systems. Reviews of Modern Physics, 73(4), 1067–1141. <a href="http://doi.org/10.1103/RevModPhys.73.1067">http://doi.org/10.1103/RevModPhys.73.1067</a></p>
+<p>[6] M.J.Lighthill, G.B.Whitham, On kinematic waves II: A theory of traffic flow on long, crowded roads. Proceedings of the Royal Society of London Series A 229, 317-345, 1955</p>
+<p>[7] Laney, C. B. (1998). Computational gasdynamics. Cambridge university press.</p>
+<p>[8] Godunov, S. K. (1959). A difference method for numerical calculation of discontinuous solutions of the equations of hydrodynamics. Matematicheskii Sbornik, 89(3), 271-306.</p>
+<p>[9] Toro, E. F. (2013). Riemann solvers and numerical methods for fluid dynamics: a practical introduction. Springer Science &amp; Business Media.</p>
+<p>&lt;/i&gt;</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># UNIVERSAL (ALWAYS RUN FIRST)</span>
+
+<span class="c1">#Importing Packages</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="c1">#matplotlib inline</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">animation</span><span class="p">,</span> <span class="n">rc</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">HTML</span>
+
+<span class="c1">#Parameters:</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mf">100.</span>
+<span class="n">dx</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">N</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">N</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mf">1.</span>
+<span class="n">v0</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">rho0</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">L_factor</span> <span class="o">=</span> <span class="mi">100</span> <span class="c1">#Factor for the Langrangian solution.</span>
+
+<span class="c1">#defining grid.</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span>
+<span class="n">xL0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">dx</span><span class="o">/</span><span class="n">L_factor</span><span class="p">)</span>
+
+<span class="c1">#Initial Conditions: Here we define various initial </span>
+<span class="c1">#conditions, only uncomment the one to be used.</span>
+
+<span class="c1">#Sin Wave</span>
+<span class="n">p0</span> <span class="o">=</span>  <span class="mf">0.2</span> <span class="o">+</span> <span class="mf">0.1</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">dx</span><span class="p">))</span>
+<span class="n">pL</span> <span class="o">=</span> <span class="mf">0.2</span> <span class="o">+</span> <span class="mf">0.1</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">dx</span><span class="o">/</span><span class="n">L_factor</span><span class="p">))</span>
+
+
+<span class="c1">#Block</span>
+<span class="c1">#p0 = 0.2*np.ones(int(N))</span>
+<span class="c1">#p0[20:30] = 0.4</span>
+<span class="c1">#pL = 0.2*np.ones(int(N)*L_factor)</span>
+<span class="c1">#pL[20*L_factor:30*L_factor] = 0.4</span>
+
+<span class="c1">#Gauss</span>
+<span class="c1">#def Gauss(x):</span>
+<span class="c1">#    return .2*np.exp(-(x - .4)**2/.03)</span>
+<span class="c1">#p0 = .2 + Gauss(x0)</span>
+<span class="c1">#pL = .2 + Gauss(xL0)</span>
+
+
+
+<span class="k">class</span> <span class="nc">variable</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Class to allow variables to be used and reset afterwards&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">backup</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">function</span><span class="o">.</span><span class="n">str</span> <span class="o">==</span> <span class="s2">&quot;Lagrange&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="n">pL</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span>
+
+    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">backup</span><span class="p">)</span>
+
+<span class="c1">#Creating global variables.</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">variable</span><span class="p">(</span><span class="n">p0</span><span class="p">)</span>
+<span class="n">xL</span> <span class="o">=</span> <span class="n">variable</span><span class="p">(</span><span class="n">xL0</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="n">variables</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="p">,</span><span class="n">xL</span><span class="p">]):</span>
+    <span class="sd">&quot;&quot;&quot;Resets variables to their original values&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">variables</span><span class="p">:</span>
+        <span class="n">variable</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+    <span class="k">return</span> <span class="mi">0</span>
+
+<span class="c1"># Helper functions</span>
+<span class="k">def</span> <span class="nf">flux</span><span class="p">(</span><span class="n">shift</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>    
+    <span class="sd">&quot;&quot;&quot; Helper function for conservative schemes. &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">shift</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">v0</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p</span><span class="o">/</span><span class="n">rho0</span><span class="p">)</span><span class="o">*</span><span class="n">p</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">v0</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="o">-</span><span class="n">shift</span><span class="p">)</span><span class="o">/</span><span class="n">rho0</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="o">-</span><span class="n">shift</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">velocity</span><span class="p">(</span><span class="n">shift</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="n">p</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Helper function for Godunov scheme. &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">shift</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">v0</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">array</span><span class="o">/</span><span class="n">rho0</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">v0</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="o">-</span><span class="n">shift</span><span class="p">)</span><span class="o">/</span><span class="n">rho0</span><span class="p">)</span>
+    
+    
+<span class="k">def</span> <span class="nf">animate</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">scheme</span><span class="p">,</span> <span class="n">line</span><span class="p">,</span> <span class="n">mass</span><span class="p">,</span> <span class="n">time</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Animation function. Runs the schemes.&quot;&quot;&quot;</span>
+    
+    <span class="c1">#Runs the schemes and sets data to lines.</span>
+    <span class="k">if</span> <span class="n">scheme</span><span class="o">.</span><span class="n">str</span> <span class="o">==</span> <span class="s2">&quot;Lagrange&quot;</span><span class="p">:</span>
+        <span class="n">xL</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">scheme</span><span class="p">)</span>
+        <span class="n">line</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">xL</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="n">pL</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">scheme</span><span class="p">)</span>
+        <span class="n">line</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">v</span><span class="p">)</span>
+    
+    <span class="c1">#Adds time and total mass to the plots.</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="s2">&quot;T = &quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="n">dt</span><span class="p">))</span> 
+    <span class="n">mass</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="s2">&quot;M = &quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">v</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">line</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">mass</span>
+    
+<span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">scheme</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Helper function to run and animate different schemes. &quot;&quot;&quot;</span>  
+    <span class="c1">#Set up figure.</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">))</span>
+    <span class="n">line</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([],</span> <span class="p">[],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\rho$&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">75</span><span class="p">,</span> <span class="o">.</span><span class="mi">45</span><span class="p">))</span>
+    <span class="n">mass</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">75</span><span class="p">,</span> <span class="o">.</span><span class="mi">42</span><span class="p">))</span>
+    
+    <span class="k">if</span> <span class="n">scheme</span><span class="o">.</span><span class="n">str</span> <span class="o">==</span> <span class="s2">&quot;Lagrange&quot;</span><span class="p">:</span>
+        <span class="n">line</span><span class="o">.</span><span class="n">set_linestyle</span><span class="p">(</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+        <span class="n">line</span><span class="o">.</span><span class="n">set_marker</span><span class="p">(</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+        <span class="n">line</span><span class="o">.</span><span class="n">set_markersize</span><span class="p">(</span><span class="o">.</span><span class="mi">06</span><span class="p">)</span>
+    
+    <span class="c1">#Plot initial condition for reference.</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">)</span>
+    
+    <span class="c1">#Run animation.</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">scheme</span><span class="o">.</span><span class="n">str</span><span class="p">)</span>
+    <span class="n">anim</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">animate</span><span class="p">,</span> <span class="n">fargs</span><span class="o">=</span><span class="p">(</span><span class="n">scheme</span><span class="p">,</span> <span class="n">line</span><span class="p">,</span> <span class="n">mass</span><span class="p">,</span> <span class="n">time</span><span class="p">),</span>
+                               <span class="n">frames</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">T</span><span class="o">/</span><span class="n">dt</span><span class="p">),</span> <span class="n">interval</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">blit</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">rc</span><span class="p">(</span><span class="s1">&#39;animation&#39;</span><span class="p">,</span> <span class="n">html</span><span class="o">=</span><span class="s1">&#39;html5&#39;</span><span class="p">)</span>
+    
+    <span class="c1">#Close figure and reset before returning.</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">anim</span><span class="o">.</span><span class="n">_fig</span><span class="p">)</span>
+    <span class="n">reset</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">HTML</span><span class="p">(</span><span class="n">anim</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">())</span>
+
+<span class="k">def</span> <span class="nf">LF</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Finite elements Lax-Friedrichs scheme. &quot;&quot;&quot;</span>  
+    <span class="n">A</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span><span class="o">/</span><span class="mf">2.</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="o">-</span><span class="n">dt</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">p</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">dx</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">)</span>
+
+<span class="n">LF</span><span class="o">.</span><span class="n">str</span> <span class="o">=</span> <span class="s2">&quot;Lax-Friedrichs&quot;</span>
+
+<span class="k">def</span> <span class="nf">LW</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Finite elements Lax-Wendroff scheme. &quot;&quot;&quot;</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">p</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">dx</span><span class="p">)</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="n">dt</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">p</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">p</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">dx</span><span class="o">*</span><span class="n">dx</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">+=</span> <span class="n">dt</span><span class="o">*</span><span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">p</span>
+
+<span class="n">LW</span><span class="o">.</span><span class="n">str</span> <span class="o">=</span> <span class="s2">&quot;Lax-Wendroff&quot;</span>
+
+<span class="k">def</span> <span class="nf">LF_cons</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Lax-Friedrichs conservative scheme. &quot;&quot;&quot;</span>
+    <span class="n">f_left</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">flux</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="o">+</span> <span class="n">flux</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">p</span><span class="p">))</span> <span class="o">-</span> <span class="n">dt</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">dx</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">p</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">f_right</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">flux</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="o">+</span> <span class="n">flux</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">p</span><span class="p">))</span> <span class="o">-</span> <span class="n">dt</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">dx</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">p</span><span class="p">)</span>
+
+    <span class="n">p</span> <span class="o">+=</span> <span class="o">-</span><span class="n">dt</span><span class="o">/</span><span class="n">dx</span><span class="o">*</span><span class="p">(</span><span class="n">f_right</span> <span class="o">-</span> <span class="n">f_left</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">p</span>
+
+<span class="n">LF_cons</span><span class="o">.</span><span class="n">str</span> <span class="o">=</span> <span class="s2">&quot;Lax-Friedrichs conservative&quot;</span>
+
+<span class="k">def</span> <span class="nf">LW_cons</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>    
+    <span class="sd">&quot;&quot;&quot; Lax-Wendroff conservative scheme. &quot;&quot;&quot;</span>
+    <span class="n">u_right</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">p</span><span class="p">)</span> <span class="o">-</span> <span class="n">dt</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">dx</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">flux</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="o">-</span> <span class="n">flux</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">p</span><span class="p">))</span>
+    <span class="n">u_left</span>  <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>  <span class="o">-</span> <span class="n">dt</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">dx</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">flux</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="o">-</span> <span class="n">flux</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">p</span><span class="p">))</span>
+
+    <span class="n">f_right</span> <span class="o">=</span> <span class="n">flux</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">u_right</span><span class="p">)</span>
+    <span class="n">f_left</span> <span class="o">=</span> <span class="n">flux</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">u_left</span><span class="p">)</span>
+    
+    <span class="n">p</span> <span class="o">+=</span> <span class="o">-</span><span class="n">dt</span><span class="o">/</span><span class="n">dx</span><span class="o">*</span><span class="p">(</span><span class="n">f_right</span> <span class="o">-</span> <span class="n">f_left</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">p</span>
+
+<span class="n">LW_cons</span><span class="o">.</span><span class="n">str</span> <span class="o">=</span> <span class="s2">&quot;Lax-Wendroff conservative&quot;</span>
+
+<span class="k">def</span> <span class="nf">Godunov</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Godunov scheme &quot;&quot;&quot;</span>
+    <span class="n">vl</span> <span class="o">=</span> <span class="n">velocity</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+    <span class="n">vr</span> <span class="o">=</span> <span class="n">velocity</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+    <span class="n">ul</span> <span class="o">=</span> <span class="n">p</span>
+    <span class="n">ur</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1">#Shock or rarefaction?</span>
+    <span class="n">Shock</span> <span class="o">=</span> <span class="n">vl</span> <span class="o">-</span> <span class="n">vr</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="c1"># 1 is shock, 0 = rarefaction.</span>
+    <span class="n">Rare</span> <span class="o">=</span> <span class="n">Shock</span> <span class="o">!=</span> <span class="mi">1</span>
+
+    <span class="c1">#Direction of shock. </span>
+    <span class="n">Sl</span> <span class="o">=</span> <span class="p">(</span><span class="n">vl</span> <span class="o">+</span> <span class="n">vr</span><span class="p">)</span><span class="o">/</span><span class="mf">2.</span> <span class="o">&lt;</span> <span class="mi">0</span>
+    <span class="n">Sr</span> <span class="o">=</span> <span class="n">Sl</span> <span class="o">!=</span> <span class="mi">1</span>
+
+    <span class="c1">#Sign of velocity.</span>
+    <span class="n">v_right</span> <span class="o">=</span> <span class="p">(</span><span class="n">vl</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="n">vr</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">v_left</span> <span class="o">=</span> <span class="p">(</span><span class="n">vr</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="n">vl</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+    
+    <span class="c1"># Adding shock.</span>
+    <span class="n">u</span>  <span class="o">=</span> <span class="n">Shock</span><span class="o">*</span><span class="n">Sl</span><span class="o">*</span><span class="n">ur</span>   
+    <span class="n">u</span> <span class="o">+=</span> <span class="n">Shock</span><span class="o">*</span><span class="n">Sr</span><span class="o">*</span><span class="n">ul</span>
+
+    <span class="c1">#Adding rarefaction.</span>
+    <span class="n">u</span> <span class="o">+=</span> <span class="n">Rare</span><span class="o">*</span><span class="n">v_right</span><span class="o">*</span><span class="n">ul</span>
+    <span class="n">u</span> <span class="o">+=</span> <span class="n">Rare</span><span class="o">*</span><span class="n">v_left</span><span class="o">*</span><span class="n">ur</span>
+
+    <span class="n">f_right</span> <span class="o">=</span> <span class="n">flux</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
+    <span class="n">f_left</span>  <span class="o">=</span> <span class="n">flux</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
+
+    <span class="n">p</span> <span class="o">+=</span> <span class="o">-</span><span class="n">dt</span><span class="o">/</span><span class="n">dx</span><span class="o">*</span><span class="p">(</span><span class="n">f_right</span> <span class="o">-</span> <span class="n">f_left</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">p</span>
+
+<span class="n">Godunov</span><span class="o">.</span><span class="n">str</span> <span class="o">=</span> <span class="s2">&quot;Godunov Method&quot;</span>
+
+<span class="k">def</span> <span class="nf">Lagrange</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">p0</span> <span class="o">=</span> <span class="n">pL</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Lagrangian solution. Returns x, not p!&quot;&quot;&quot;</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">X</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">p0</span><span class="p">)</span><span class="o">*</span><span class="n">dt</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">X</span>
+
+<span class="n">Lagrange</span><span class="o">.</span><span class="n">str</span> <span class="o">=</span> <span class="s2">&quot;Lagrange&quot;</span>
+
+
+<span class="n">p_dict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">lines_dict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">def</span> <span class="nf">animate_all</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">schemes</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Runs the schemes and sets line values. &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">scheme</span> <span class="ow">in</span> <span class="n">schemes</span><span class="p">:</span>
+        <span class="n">p_dict</span><span class="p">[</span><span class="n">scheme</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">scheme</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">scheme</span><span class="o">.</span><span class="n">str</span> <span class="o">==</span> <span class="s2">&quot;Lagrange&quot;</span><span class="p">:</span>
+            <span class="n">lines_dict</span><span class="p">[</span><span class="n">scheme</span><span class="p">]</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">p_dict</span><span class="p">[</span><span class="n">scheme</span><span class="p">]</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="n">pL</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">lines_dict</span><span class="p">[</span><span class="n">scheme</span><span class="p">]</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">p_dict</span><span class="p">[</span><span class="n">scheme</span><span class="p">]</span><span class="o">.</span><span class="n">v</span><span class="p">)</span>
+            
+    <span class="k">return</span> <span class="n">lines_dict</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+    
+<span class="k">def</span> <span class="nf">run_all</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot; Helper function to animate different schemes. &quot;&quot;&quot;</span>
+    
+    <span class="n">schemes</span> <span class="o">=</span> <span class="p">[</span><span class="n">LF</span><span class="p">,</span> <span class="n">LW</span><span class="p">,</span> <span class="n">LF_cons</span><span class="p">,</span> <span class="n">LW_cons</span><span class="p">,</span> <span class="n">Godunov</span><span class="p">,</span> <span class="n">Lagrange</span><span class="p">]</span>
+
+    <span class="c1">#Stores the data for the corresponding scheme.</span>
+    
+    
+    <span class="c1">#Set up plot.</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Comparison of schemes&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\rho$&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+    
+    <span class="c1">#Set up the dictionary data.</span>
+    <span class="k">for</span> <span class="n">scheme</span> <span class="ow">in</span> <span class="n">schemes</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">scheme</span><span class="o">.</span><span class="n">str</span> <span class="o">==</span> <span class="s2">&quot;Lagrange&quot;</span><span class="p">:</span>
+            <span class="n">p_dict</span><span class="p">[</span><span class="n">scheme</span><span class="p">]</span> <span class="o">=</span> <span class="n">variable</span><span class="p">(</span><span class="n">xL0</span><span class="p">)</span>
+            <span class="n">lines_dict</span><span class="p">[</span><span class="n">scheme</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([],</span> <span class="p">[],</span> <span class="s1">&#39;bo&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=.</span><span class="mi">01</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">scheme</span><span class="o">.</span><span class="n">str</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">p_dict</span><span class="p">[</span><span class="n">scheme</span><span class="p">]</span> <span class="o">=</span> <span class="n">variable</span><span class="p">(</span><span class="n">p0</span><span class="p">)</span>
+            <span class="n">lines_dict</span><span class="p">[</span><span class="n">scheme</span><span class="p">]</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([],</span> <span class="p">[],</span> <span class="n">label</span><span class="o">=</span><span class="n">scheme</span><span class="o">.</span><span class="n">str</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    
+    <span class="c1">#Plot initial values for reference.</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">)</span>
+    <span class="n">anim</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">animate_all</span><span class="p">,</span> <span class="n">fargs</span><span class="o">=</span><span class="p">(</span><span class="n">schemes</span><span class="p">,),</span>
+                               <span class="n">frames</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">T</span><span class="o">/</span><span class="n">dt</span><span class="p">),</span> <span class="n">interval</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">blit</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">rc</span><span class="p">(</span><span class="s1">&#39;animation&#39;</span><span class="p">,</span> <span class="n">html</span><span class="o">=</span><span class="s1">&#39;html5&#39;</span><span class="p">)</span>
+    <span class="c1">#Close figure and reset before returning.</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">anim</span><span class="o">.</span><span class="n">_fig</span><span class="p">)</span>
+    <span class="n">reset</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">HTML</span><span class="p">(</span><span class="n">anim</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">())</span>
+<span class="k">def</span> <span class="nf">L2</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;returns the L2 norm of the system&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span><span class="o">*</span><span class="n">dx</span><span class="o">*</span><span class="n">dt</span>
+
+<span class="k">def</span> <span class="nf">L_inf</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;returns the L infinity norm of the system&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">))</span><span class="o">*</span><span class="n">dx</span><span class="o">*</span><span class="n">dt</span>
+
+<span class="n">L2</span><span class="o">.</span><span class="n">str</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$L_2$&#39;</span>
+<span class="n">L_inf</span><span class="o">.</span><span class="n">str</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$L_\infty$&#39;</span>
+
+<span class="k">def</span> <span class="nf">check_collapse</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Checks the &#39;collapse&#39; of the Lagrangian solution. &quot;&quot;&quot;</span>
+    <span class="c1"># Collapse has happened as soon as two right neigbours have</span>
+    <span class="c1"># lower x values than their left neighbours.</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">count</span> <span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="kc">False</span>
+    
+<span class="k">def</span> <span class="nf">compare</span><span class="p">(</span><span class="n">norm</span><span class="o">=</span><span class="n">L2</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">schemes</span> <span class="o">=</span> <span class="p">[</span><span class="n">LF</span><span class="p">,</span> <span class="n">LW</span><span class="p">,</span> <span class="n">LF_cons</span><span class="p">,</span> <span class="n">LW_cons</span><span class="p">,</span> <span class="n">Godunov</span><span class="p">]</span>
+    <span class="sd">&quot;&quot;&quot; Compares schemes to Lagrange using the given norm &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">plot</span><span class="p">:</span>
+        <span class="c1">#Set up figure</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Error comparison &quot;</span> <span class="o">+</span> <span class="s2">&quot;(&quot;</span> <span class="o">+</span> <span class="n">norm</span><span class="o">.</span><span class="n">str</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span><span class="p">)</span>
+    
+    <span class="c1">#Set up dictionaries and time variables.</span>
+    <span class="n">p_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">p_dict</span><span class="p">[</span><span class="n">Lagrange</span><span class="p">]</span> <span class="o">=</span> <span class="n">variable</span><span class="p">(</span><span class="n">xL0</span><span class="p">)</span>    
+    <span class="n">diff_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+    <span class="n">t_collapse</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">for</span> <span class="n">scheme</span> <span class="ow">in</span> <span class="n">schemes</span><span class="p">:</span>
+        <span class="n">p_dict</span><span class="p">[</span><span class="n">scheme</span><span class="p">]</span> <span class="o">=</span> <span class="n">variable</span><span class="p">(</span><span class="n">p0</span><span class="p">)</span>
+        <span class="n">diff_dict</span><span class="p">[</span><span class="n">scheme</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="c1"># Run the simulation</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
+        <span class="c1">#Check for collapse.</span>
+        <span class="k">if</span> <span class="n">check_collapse</span><span class="p">(</span><span class="n">p_dict</span><span class="p">[</span><span class="n">Lagrange</span><span class="p">]</span><span class="o">.</span><span class="n">v</span><span class="p">)</span> <span class="ow">and</span> <span class="n">t_collapse</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">t_collapse</span> <span class="o">=</span> <span class="n">t</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">plot</span><span class="p">:</span>
+                <span class="k">break</span>
+        <span class="c1">#Update the Lagrange solution</span>
+        <span class="n">p_dict</span><span class="p">[</span><span class="n">Lagrange</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">Lagrange</span><span class="p">)</span>
+        
+        <span class="c1">#Interpolate the Lagrange solution to compare it to the </span>
+        <span class="c1">#others. Also update the p-vectors for the schemes. </span>
+        <span class="k">for</span> <span class="n">scheme</span> <span class="ow">in</span> <span class="n">schemes</span><span class="p">:</span>
+            <span class="n">p_dict</span><span class="p">[</span><span class="n">scheme</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">scheme</span><span class="p">)</span>
+            <span class="n">interp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">p_dict</span><span class="p">[</span><span class="n">Lagrange</span><span class="p">]</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="n">pL</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">diff_dict</span><span class="p">[</span><span class="n">scheme</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">interp</span><span class="p">,</span> <span class="n">p_dict</span><span class="p">[</span><span class="n">scheme</span><span class="p">]</span><span class="o">.</span><span class="n">v</span><span class="p">))</span>
+            
+        
+    
+    <span class="c1">#Maximum error value for collapse plotting.</span>
+    <span class="k">if</span> <span class="n">plot</span><span class="p">:</span>
+        <span class="n">max_val</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">min_val</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">30</span>
+        <span class="k">for</span> <span class="n">scheme</span> <span class="ow">in</span> <span class="n">schemes</span><span class="p">:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">diff_dict</span><span class="p">[</span><span class="n">scheme</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">scheme</span><span class="o">.</span><span class="n">str</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">diff_dict</span><span class="p">[</span><span class="n">scheme</span><span class="p">])</span> <span class="o">&gt;</span> <span class="n">max_val</span><span class="p">:</span>
+                <span class="n">max_val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">diff_dict</span><span class="p">[</span><span class="n">scheme</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">diff_dict</span><span class="p">[</span><span class="n">scheme</span><span class="p">])</span> <span class="o">&lt;</span> <span class="n">min_val</span><span class="p">:</span>
+                <span class="n">min_val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">diff_dict</span><span class="p">[</span><span class="n">scheme</span><span class="p">])</span>
+        <span class="c1">#Plot collapse line</span>
+        <span class="k">if</span> <span class="n">t_collapse</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">t_collapse</span><span class="p">,</span> <span class="n">t_collapse</span><span class="p">],</span> <span class="p">[</span><span class="n">min_val</span><span class="p">,</span><span class="n">max_val</span><span class="p">],</span> <span class="s2">&quot;--&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">min_val</span><span class="p">,</span> <span class="n">max_val</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">plot</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">diff_dict</span>
+    
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12151,7 +12476,7 @@ Image from <a href="http://laurent.nack.pagesperso-orange.fr/burgers/burger.htm"
 <h2 id="Finite-Difference-Methods-"><font color="navy">Finite Difference Methods </font><a class="anchor-link" href="#Finite-Difference-Methods-">&#182;</a></h2>
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12162,7 +12487,7 @@ Image from <a href="http://laurent.nack.pagesperso-orange.fr/burgers/burger.htm"
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
@@ -12989,7 +13314,7 @@ YXRhAAAAAQAAAABMYXZmNTYuMzYuMTAw
 </div>
 </div>
 
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -13009,7 +13334,7 @@ YXRhAAAAAQAAAABMYXZmNTYuMzYuMTAw
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -13025,7 +13350,39 @@ YXRhAAAAAQAAAABMYXZmNTYuMzYuMTAw
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5><font color='navy'> Explanation: <font></h5>
+<p>The Lax-Friedrichs scheme is created through a small alteration to the $\delta_0$ scheme. By replacing $u_x^t$ with the average of the two neighbouring cells, the instability can be avoided and the scheme becomes conditionally stable. The Lax-Friedrichs scheme for the WLR equation is:
+\begin{equation}
+    u_x^{t+1} = \frac{u_{x+1}^t + u_{x-1}^t}{2} - (1 - 2u)\frac{\Delta t}{2 \Delta x}(u_{x+1}^t - u_{x-1}^t)
+\end{equation}</p>
+<p>The condition for stability can be determined by the Von Neumann analysis below. 
+\begin{align}
+    \xi &amp;= \frac{e^{ik\Delta x} + e^{-ik\Delta x}}{2} - (1 - 2u)\frac{\Delta t}{2 \Delta x} \left(e^{ik\Delta x} - e^{ik\Delta x}\right) \\
+    &amp;= \cos{k\Delta x} - \frac{\Delta t}{\Delta x}(1 - 2u) i \sin{k \Delta x}.
+ \end{align}
+ To find our stability condition, we need to find the amplification factor
+ \begin{align}
+     |\xi|^2 &amp;= \cos^2{k\Delta x} + r^2 \sin^2{k\Delta x} \\ 
+             &amp;= 1 - (1 - r^2)\sin^2{k\Delta x},
+ \end{align}
+ where $ r \equiv \frac{\Delta t}{\Delta x}(1 - 2u) $. This shows that the scheme is stable as long as $ r \leq 1 $. The newfound stability comes at a cost, as the Lax-Friedrichs scheme introduces second-order numerical dissipation to the equation. The average of neighbours on the RHS can be expanded as</p>
+<p>\begin{align}
+     \frac{u_{x+1}^t + u_{x-1}^t}{2} &amp;= u_x^t + \frac{\Delta x^2}{2}\frac{\partial^2 u}{\partial x^2} + \mathcal{O}(x^4),
+ \end{align}
+and the numerical dissipation is identified as the second order derivative.</p>
+<h5><font color='navy'> Accuracy: <font></h5>
+<p>\begin{equation}
+R_h = \frac{\Delta t}{2}\frac{\partial^2 u}{\partial t^2} + \frac{\Delta x^2}{6}\frac{\partial^3 u}{\partial x^3} + \frac{\Delta x^2}{2\Delta t}\frac{\partial^2 u}{\partial x^2} + \mathcal{O}(\Delta t^2, \Delta x^4)
+\end{equation}</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -13037,7 +13394,7 @@ YXRhAAAAAQAAAABMYXZmNTYuMzYuMTAw
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
@@ -13915,7 +14272,7 @@ LjEwMA==
 </div>
 </div>
 
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -13937,7 +14294,7 @@ LjEwMA==
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -13957,7 +14314,417 @@ LjEwMA==
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="-Explanation:-"><font color="navy"> Explanation: </font><a class="anchor-link" href="#-Explanation:-">&#182;</a></h5><p>The Lax-Wendroff scheme is created by compensating explicitly for the dissipation in the $\delta_0$ scheme. If we look at the truncation of both sides of $\delta_0$, we can discover the dissipation term.</p>
+<p>\begin{align}
+    \frac{u_x^{t+1} - u_x^t}{\Delta t} &amp;= \frac{\partial u}{\partial t} + \frac{\Delta t}{2}\frac{\partial^2 u}{\partial t^2} + \frac{\Delta t^2}{6} \frac{\partial^3 u}{\partial t^3} + \mathcal{O}(\Delta t^3)  \text{, and} \\
+    \frac{u_{x+1}^t - u_{x-1}^t}{2\Delta x} &amp;= \frac{\partial u}{\partial x} + \frac{\Delta x^2}{6}\frac{\partial^3 u}{\partial x^3} +  \mathcal{O}(\Delta x^4).
+\end{align}
+The dissipation term is first-order and can be rewritten by using the WLR equation to read:
+\begin{align}
+    \frac{\Delta t}{2}\frac{\partial^2 u}{\partial t^2} &amp;= -(1-2u)^2\frac{\Delta t}{2}\frac{\partial^2 u}{\partial x^2} \\
+    &amp;= -(1-2u)^2\frac{\Delta t^2}{2 \Delta x^2} (u_{x+1}^t - 2u_x^t + u_{x-1}^t) + \mathcal{O}(\Delta x^2).
+\end{align}</p>
+<p>By subtracting this term from the $\delta_0$ scheme, we are left with a dissipation-free second order scheme:
+ \begin{align}
+    u_x^{t+1} = u_x^t - \frac{\Delta t}{2 \Delta x}(u_{x+1}^t - u_{x-1}^t) + (1-2u)^2\frac{\Delta t^2}{2 \Delta x^2} (u_{x+1}^t - 2u_x^t + u_{x-1}^t). 
+ \end{align}
+ But alas, this scheme is still not perfect. As evidenced by the earlier identities for the truncation error, the leading-order truncation is now a dispersive term. Since the shockwave is nearly discontinuous, it requires a lot of fourier modes to be accurately represented. This is why the biggest discrepancy between the Lax-Wendroff solution and the other solutions is found around the shock wave.</p>
+<h5 id="-Accuracy:-"><font color="navy"> Accuracy: </font><a class="anchor-link" href="#-Accuracy:-">&#182;</a></h5><p>\begin{equation}
+R_h = \frac{\Delta t^2}{6} \frac{\partial^3 u}{\partial t^3} + \frac{\Delta x^2}{6}\frac{\partial^3 u}{\partial x^3} + \frac{\Delta x^2}{12}\frac{\partial^4 u}{\partial x^4} + \mathcal{O}(\Delta t^3, \Delta x^4)
+\end{equation}</p>
+<h5 id="Modified-Wavenumber:"><font color="navy">Modified Wavenumber:</font><a class="anchor-link" href="#Modified-Wavenumber:">&#182;</a></h5><p>Another way to analyse the dispersive term is by looking at the modified wavenumber. Due to the discrete nature of the grid, waves consisting of high wavenumber $k$ (and therefore short wavelength) will be poorly sampled. This introduces a modified wavenumber $k'$. The expression for the modified wavenumber can be found by treating a Fourier mode $f = e^{ikx}$ with the scheme in question. For the Lax-Wendroff scheme</p>
+<p>\begin{equation}
+    (1-2u)\frac{\partial u}{\partial x} \approx (1-2u)\frac{1}{2 \Delta x} (u_{x+1}^t - u_{x-1}^t) - (1-2u)^2\frac{\Delta t}{2 \Delta x^2} (u_{x+1}^t - 2u_x^t + u_{x-1}^t),
+\end{equation}</p>
+<p>this results in:
+\begin{align}
+    ik'f &amp;=  \frac{1}{2 \Delta x}\left( e^{ik(x + \Delta x)} - e^{ik(x - \Delta x)}\right) - (1-2u)\frac{\Delta t}{2 \Delta x^2}\left(e^{ik(x + \Delta x)} -2e^{ikx} + e^{ik(x - \Delta x)}\right) \\
+    ik' &amp; = i\frac{\sin(k\Delta x)}{\Delta x} - \Delta t(1-2u)\frac{\cos(k\Delta x) - 2}{2 \Delta x} \\
+    \frac{k'}{k}    &amp;= \text{sinc}(k\Delta x) + 2i\Delta t(1-2u)\frac{\sin^2\left(\frac{k\Delta x}{2}\right)}{k\Delta x^2}.
+\end{align}</p>
+<p>Compared to the modified wavenumber for the $\delta_0$ scheme, which gives</p>
+<p>\begin{equation}
+    \frac{k'}{k} = \text{sinc}(k\Delta x),
+\end{equation}</p>
+<p>the effect on wavenumber of Lax-Wendroff is much larger. See below for a comparison.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">k_d0</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Calculates k change for delta zero scheme&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">dx</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">dx</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">k_LW</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Calculates k change for Lax-Wendroff scheme&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">k_d0</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span><span class="n">j</span><span class="o">*</span><span class="n">dt</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">dx</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">dx</span><span class="o">*</span><span class="n">dx</span><span class="p">))</span>
+<span class="c1">#Local density of cars. </span>
+<span class="n">u</span> <span class="o">=</span> <span class="o">.</span><span class="mi">1</span>
+
+<span class="n">dk</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="n">N</span>
+<span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">dk</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">dk</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">k_d0</span><span class="p">(</span><span class="n">k</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\delta_0$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">k_LW</span><span class="p">(</span><span class="n">k</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Lax-Wendroff&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;k&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$k^\prime/k$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Modified wavenumber for u = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">u</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+AAAASUVORK5CYII=
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -13975,7 +14742,7 @@ LjEwMA==
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -13986,7 +14753,7 @@ LjEwMA==
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[12]:</div>
@@ -14827,7 +15594,34 @@ LjEwMA==
 </div>
 </div>
 
-</div></section></section><section><section>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Explanation:-"><font color="navy">Explanation: </font><a class="anchor-link" href="#Explanation:-">&#182;</a></h5><p>The finite volumes version of the Lax-Friedrichs scheme is similar to its finite differences cousin. It replaces the $u_x^t$ by the average of neighbours, but does so implicitly by defining the flux at the boundary as
+\begin{align}
+    f_{x+\frac{1}{2}}^{t+\frac{1}{2}} = \frac{1}{2}(f_{x+1}^t + f_x^t) - \frac{\Delta x}{2\Delta t}(u_{x+1}^t - u_x^t), 
+\end{align}
+which results in a final scheme of 
+\begin{align}
+    u_x^{t+1} = \frac{u_{x+1}^t + u_{x-1}^t}{2} -\frac{\Delta t}{2\Delta x}\left(f_{x+1}^{t} - f_{x-1}^{t}\right).
+\end{align}
+Its stability and introduction of dissipation are the same as the finite differences version, given a sufficiently smooth solution.</p>
+<p>It is good to note that the only difference between the previous version is $(1-2u_x^t)$ by the appropriate neighbouring $( 1-2u_{x \pm 1}^t)$. The above flux term can then be expanded to read</p>
+<p>\begin{align}
+    \frac{\Delta t}{2\Delta x}\left(f_{x+1}^{t} - f_{x-1}^{t}\right) &amp;= \frac{\Delta t}{2\Delta x}\left[(1-2u_x^t)(u_{x+1}^t - u_{x-1}^t) - 2\Delta x\frac{\partial u}{\partial x}(u_{x+1}^t - u_{x-1}^t) + \right] + \mathcal{O}(\Delta x^3) \\
+    &amp;= \frac{\Delta t}{2\Delta x}\left[(1-2u_x^t)(u_{x+1}^t - u_{x-1}^t) - \left(2\Delta x \frac{\partial u}{\partial x}\right)^2   \right] + \mathcal{O}(\Delta x^3) \\
+    &amp;= \frac{\Delta t}{2\Delta x}(1-2u_x^t)(u_{x+1}^t - u_{x-1}^t) - 2\Delta x\Delta t\left(\frac{\partial u}{\partial x}\right)^2 + \mathcal{O}(\Delta x^3).
+\end{align}</p>
+<p>One can see that the conservative form adds, among others, a $2\Delta t\Delta x$ term to the previous Lax-Friedrichs equation.</p>
+<h5 id="Accuracy:-"><font color="navy">Accuracy: </font><a class="anchor-link" href="#Accuracy:-">&#182;</a></h5><p>\begin{equation}
+R_h = \frac{\Delta t}{2}\frac{\partial^2 u}{\partial t^2} + \frac{\Delta x^2}{6}\frac{\partial^3 u}{\partial x^3} + \frac{\Delta x^2}{2\Delta t}\frac{\partial^2 u}{\partial x^2} + 2\Delta x\Delta t\left(\frac{\partial u}{\partial x}\right)^2 + \mathcal{O}(\Delta t^2, \Delta x^3)
+\end{equation}</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -14838,7 +15632,7 @@ LjEwMA==
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[13]:</div>
@@ -15701,7 +16495,21 @@ AAAlqXRvbwAAAB1kYXRhAAAAAQAAAABMYXZmNTYuMzYuMTAw
 </div>
 </div>
 
-</div></section></section><section><section>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Explanation:-"><font color="navy">Explanation: </font><a class="anchor-link" href="#Explanation:-">&#182;</a></h5><p>This scheme again compensates for the dissipation of the simple centered scheme. By defining</p>
+<p>\begin{align}
+    u_{x+\frac{1}{2}}^{t+\frac{1}{2}} = \frac{u_{x+1} + u_{x-1}^t}{2} - \frac{\Delta t}{2\Delta x}(f_{x+1}^t - f_x^t), 
+\end{align}
+the added flux term on the right corresponds to the second derivative as seen in the finite differences version.</p>
+<h5 id="Accuracy:"><font color="navy">Accuracy:</font><a class="anchor-link" href="#Accuracy:">&#182;</a></h5><p>While we could not fully calculate the truncation error for the Lax-Wendroff conservative scheme, the conservative scheme is still second order accurate.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -15709,7 +16517,7 @@ AAAlqXRvbwAAAB1kYXRhAAAAAQAAAABMYXZmNTYuMzYuMTAw
 <h2 id="-Gudonov-Method-$\mathcal{O}(\Delta-t,-\Delta-x)$-"><font color="navy"> Gudonov Method $\mathcal{O}(\Delta t, \Delta x)$ </font><a class="anchor-link" href="#-Gudonov-Method-$\mathcal{O}(\Delta-t,-\Delta-x)$-">&#182;</a></h2>
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[14]:</div>
@@ -16541,7 +17349,7 @@ dG9vAAAAHWRhdGEAAAABAAAAAExhdmY1Ni4zNi4xMDA=
 </div>
 </div>
 
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -16567,7 +17375,50 @@ u_r, &amp; \text{if}\ x&gt;0
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Explanation:"><font color="navy">Explanation:</font><a class="anchor-link" href="#Explanation:">&#182;</a></h5><p>The Godunov method follows the earlier conservative schemes by using 
+\begin{align}
+    u_x^{t+1} = u_x^t -\frac{\Delta t}{\Delta x}\left(f_{x+\frac{1}{2}}^{t+\frac{1}{2}} - f_{x-\frac{1}{2}}^{t+\frac{1}{2}}\right)
+\end{align}
+to update its values in time and is therefore also conservative. Again, the trouble is finding the value of the flux at the border of the cell $f_{x+\frac{1}{2}}^{t+\frac{1}{2}}$.</p>
+<p>The Godunov method views the boundaries between adjacent cells as Riemann problems. Our discrete grid gives us a piecewise constant function, with discontinuities at the boundaries, which can be stated as follows:</p>
+<p>\begin{equation}
+    u(x, 0)=
+    \begin{cases}
+      u_l, &amp; \text{if}\ x&lt;0 \\
+      u_r, &amp; \text{if}\ x&gt;0
+    \end{cases}
+ \end{equation}</p>
+<p>By solving the above Riemann problem, the halfway value $u(0)$ can be found. The derivation of the Godunov scheme is a bit too broad for the scope of this work, but can be found in Godunov's 1959 paper$^8$. Concretely, solving the Riemann problem comes down to the case of shock ($u_l &gt; u_r$) and rarefaction ($u_l \leq u_r$). In case of shock:</p>
+<p>\begin{align}
+    \text{Shock speed } S \equiv \frac{u_l + u_r}{2}\\
+    u(0)=
+    \begin{cases}
+      u_l, &amp; \text{if}\ S &gt; 0 \\
+      u_r, &amp; \text{if}\ S &lt; 0
+    \end{cases}
+ \end{align}</p>
+<p>In case of rarefaction:
+\begin{align}
+    u(0)=
+    \begin{cases}
+      u_l, &amp; \text{if}\ 0 \leq u_l \\
+      0,   &amp; \text{if}\ u_l &lt; 0 &lt; u_r \\
+      u_r, &amp; \text{if}\ u_r \leq 0
+    \end{cases}
+ \end{align}</p>
+<h5 id="Accuracy:"><font color="navy">Accuracy:</font><a class="anchor-link" href="#Accuracy:">&#182;</a></h5><p>The above Godunov method obeys the Godunov theorem. The Godunov theorem states that monotone schemes can at most be first order accurate. The derivation of this result is beyond the scope of this work. A consequence of this theorem, as expressed by remark 13.5.2 in Toro 2013$^9$ , is that second order methods produce oscillations near discontinuities. To verify this, an initial condition of a block has been provided. These oscillations can be clearly seen in other schemes, yet are absent in the Godunov solution.</p>
+<p><i> [8] Godunov, S. K. (1959). A difference method for numerical calculation of discontinuous solutions of the equations of hydrodynamics. Matematicheskii Sbornik, 89(3), 271-306.</p>
+<p>[9] Toro, E. F. (2013). Riemann solvers and numerical methods for fluid dynamics: a practical introduction. Springer Science &amp; Business Media.</p>
+<p>&lt;/i&gt;</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -16575,7 +17426,7 @@ u_r, &amp; \text{if}\ x&gt;0
 <h2 id="An-exact-numerical-solution-by-the-Lagrange-method-"><font color="navy">An exact numerical solution by the Lagrange method </font><a class="anchor-link" href="#An-exact-numerical-solution-by-the-Lagrange-method-">&#182;</a></h2>
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[15]:</div>
@@ -17503,7 +18354,7 @@ dG9vAAAAHWRhdGEAAAABAAAAAExhdmY1Ni4zNi4xMDA=
 </div>
 </div>
 
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -17517,7 +18368,7 @@ dG9vAAAAHWRhdGEAAAABAAAAAExhdmY1Ni4zNi4xMDA=
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -17525,7 +18376,16 @@ dG9vAAAAHWRhdGEAAAABAAAAAExhdmY1Ni4zNi4xMDA=
 <h1 id="Comparison-and-error-analysis-"><font color="navy">Comparison and error analysis </font><a class="anchor-link" href="#Comparison-and-error-analysis-">&#182;</a></h1>
 </div>
 </div>
-</div></section><section>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="-Comparison-of-all-schemes-"><font color="navy"> Comparison of all schemes </font><a class="anchor-link" href="#-Comparison-of-all-schemes-">&#182;</a></h2><p>The following code runs all schemes side by side. By comparing the behaviour of each scheme to the Lagrangian scheme, one can  gain insight into whether a scheme is behaving properly.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[16]:</div>
@@ -19305,7 +20165,17 @@ AExhdmY1Ni4zNi4xMDA=
 </div>
 </div>
 
-</div></section></section><section><section>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Comment:"><font color="navy">Comment:</font><a class="anchor-link" href="#Comment:">&#182;</a></h5><p>It must be noted that the comparison is only valid until collapse time $t_c$, after which the Lagrangian scheme is no longer a proper function.</p>
+<p>As can be seen from the above animation, the Lax-Wendroff scheme quickly falls behind the other schemes. This is explained by  its increase in mass, seen previously. Since the speed of the wave is dependent on $(1-2u)$, as soon as total mass $m =  \sum_{n=0}^N u$ increases, overall speed decreases. The phenomenon is not observed in its conservative cousin.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -19323,7 +20193,7 @@ AExhdmY1Ni4zNi4xMDA=
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[20]:</div>
@@ -20185,7 +21055,7 @@ EREREQmx/w9U3nSPhZ49TgAAAABJRU5ErkJggg==
 </div>
 </div>
 
-</div></section><section>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[19]:</div>
@@ -21065,7 +21935,28 @@ xAAAAABJRU5ErkJggg==
 </div>
 </div>
 
-</div></section></section><section><section>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Comment:"><font color="navy">Comment:</font><a class="anchor-link" href="#Comment:">&#182;</a></h4><p>The above figure shows the total cumulative error of every scheme when compared to the Lagrangian solution. The collapse time $t_c$ has been marked. Since the error is cumulative, errors for all schemes increase with time.</p>
+<p>Of all our schemes, the conservative Lax-Wendroff scheme seems to be the best solution to the WLR equation. It must be noted however, that this scheme strongly distorts the curve around the schock wave, compared to e.g. the Godunov scheme. This distortion can be seen in the different results for the $L_2$ and the $L_\infty$ norms. The latter measures the largest deviation at a single point, at which the Lax-Wendroff scheme performs poorly.</p>
+<p>The two Lax-Friedrich schemes are almost identical at our original parameters for $\Delta x$ and $\Delta t$ and are the worst overall, in accordance with their first order accuracy. The Godunov scheme, while being of the same order of accuracy, still performs better due to its more accurate approximation of the Riemann problem.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="--Conclusions-"><font color="navy"> <u> Conclusions </u></font><a class="anchor-link" href="#--Conclusions-">&#182;</a></h3><p>In this project we found out the numerical solutions to the LWR equation modelling traffic flow. The most essential feature i.e a shock which corressponds to a traffic jam was observed in all the solutions.</p>
+<p>We compared different schemes and saw how finite volume conservative schemes are better than finite element non-conservative ones due to their conservative nature. We also saw that the schemes perform poorly after the formation of the shock and Gudonov method is the most stable near the time forming up to the shock. We discussed the accuracy order of our schemes and their truncation criteria.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -21082,7 +21973,7 @@ xAAAAABJRU5ErkJggg==
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -21100,73 +21991,11 @@ xAAAAABJRU5ErkJggg==
 </div>
 </div>
 </div>
-</div>
-</div>
-
-<script>
-
-require(
-    {
-      // it makes sense to wait a little bit when you are loading
-      // reveal from a cdn in a slow connection environment
-      waitSeconds: 15
-    },
-    [
-      "reveal.js/lib/js/head.min.js",
-      "reveal.js/js/reveal.js"
-    ],
-
-    function(head, Reveal){
-
-        // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
-        Reveal.initialize({
-            controls: true,
-            progress: true,
-            history: true,
-
-            transition: "slide",
-
-            // Optional libraries used to extend on reveal.js
-            dependencies: [
-                { src: "reveal.js/lib/js/classList.js",
-                  condition: function() { return !document.body.classList; } },
-                { src: "reveal.js/plugin/notes/notes.js",
-                  async: true,
-                  condition: function() { return !!document.body.classList; } }
-            ]
-        });
-
-        var update = function(event){
-          if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
-            MathJax.Hub.Rerender(Reveal.getCurrentSlide());
-          }
-        };
-
-        Reveal.addEventListener('slidechanged', update);
-
-        function setScrollingSlide() {
-            var scroll = false
-            if (scroll === true) {
-              var h = $('.reveal').height() * 0.95;
-              $('section.present').find('section')
-                .filter(function() {
-                  return $(this).height() > h;
-                })
-                .css('height', 'calc(95vh)')
-                .css('overflow-y', 'scroll')
-                .css('margin-top', '20px');
-            }
-        }
-
-        // check and set the scrolling slide every time the slide change
-        Reveal.addEventListener('slidechanged', setScrollingSlide);
-
-    }
-
-);
-</script>
-
+    </div>
+  </div>
 </body>
+
+ 
 
 
 </html>
